@@ -1,0 +1,709 @@
+
+html{ height: 100%;}
+body{
+    background:#fff url(../../images/admin/login-bg.jpg) no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    min-width: 980px !important;
+    height: 100%;
+}
+.beta-version{
+    font-size:24px;
+    color:#fff;
+    position:fixed;
+    z-index:99;
+    top:80px;
+    left:1%;
+    padding:20px;
+    background:rgba(0,0,0,0.3);
+}
+.beta-version p{ margin:0;}
+.parsley-errors-list,
+.parsley-errors-list.filled{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    z-index:9999;
+    top:45px;
+    left:0;
+    font-size:8px;
+    line-height:14px;
+    color: red;
+    -webkit-transition: all 1.5s ease;
+    -moz-transition: all 1.5s ease;
+    -ms-transition: all 1.5s ease;
+    -o-transition: all 1.5s ease;
+    transition: all 1.5s ease;
+}
+#register-wrap .parsley-errors-list,
+#register-wrap .parsley-errors-list.filled{
+    top:33px;
+    /*display:none;*/
+}
+#login-wrap{ overflow: hidden;}
+#login-wrap .main-holder{
+    overflow: hidden;
+    padding: 40px 0 0 ;
+}
+#login-wrap .main-holder .heading-area{
+    overflow: hidden;
+    text-align: center;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+}
+#login-wrap .main-holder .heading-area .heading{
+    font-size: 20px;
+    line-height: 24px;
+    color: #fff;
+    display: block;
+}
+#login-wrap .holder{
+    overflow: hidden;
+    width:96%;
+    margin: 0 auto;
+}
+/*#login-wrap .holder .logo{
+        background:url(../../images/login/logo.png) no-repeat 80% 100%;
+        height:200px;
+        width:80%;
+        text-indent: -9999px;
+        display: block;
+}*/
+#login-wrap .holder .logo{ text-indent: -9999px;}
+#login-wrap .holder .logo a{
+    display: block;
+    /*height: 100%;*/
+}
+#login-wrap .holder .wrapper{
+    background: #f7f7f8;
+    border-radius: 40px;
+    margin: 0 auto 20px;
+}
+#login-wrap .holder .form-wrap{
+    overflow: hidden;
+    padding:40px 4% 0;
+}
+#login-wrap .holder .input-wrap{
+    background: #fff;
+    border: 1px solid #dbd7e3;
+    padding: 4px 10px;
+    font-size: 24px !important;
+    text-transform: capitalize;
+    color: #8f86a3;
+    line-height: 28px;
+    margin: 0 0 20px;
+}
+#login-wrap .holder .input-wrap input[type="text"],
+#login-wrap .holder .input-wrap input[type="email"],
+#login-wrap .holder .input-wrap input[type="password"]{
+    background: url(../../images/login/ico3.png) no-repeat 10px 3px;
+    width: 100%;
+    outline: none;
+    border: 0;
+    padding:4px 10px 2px 42px;
+    font-size: 18px !important;
+    color: #8f86a3;
+    line-height: 22px;
+    font-weight: normal !important;
+}
+#login-wrap .holder .input-wrap input[type="password"]{
+    background: url(../../images/login/ico2.png) no-repeat 10px 3px;
+}
+
+input:-webkit-autofill {-webkit-box-shadow: 0 0 0 1000px #fff inset;}
+#login-wrap .holder .input-wrap input[type="password"]:focus{ background: url(../../images/login/ico2.png) no-repeat 10px 3px;}
+#login-wrap .holder .input-wrap input[type="email"]:focus{  background: url(../../images/login/ico3.png) no-repeat 10px 3px;}
+#register-wrap .holder input[type="submit"]{
+    display: inline-block;
+    vertical-align: middle;
+    padding:10px 20px;
+    margin:38px -10px 0 0;
+    background: #3f5a9c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-transform: capitalize;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+    border-radius: 6px;
+}
+#register-wrap .holder input[type="submit"]:hover{ background:#233258; }
+#login-wrap .sign-area{
+    overflow: hidden;
+    text-align: center;
+    font-size: 20px;
+    line-height: 24px;
+    padding: 11px 0 28px;
+    border-bottom: 1px solid #dbd7e3;
+}
+#login-wrap .sign-area .sign-btn{
+    display: block;
+    margin: 0 auto 10px;
+    padding:13px 40px;
+    background: #37277f;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+#login-wrap .sign-area .forgot{
+    display: block;
+    padding: 0 10px;
+}
+#login-wrap .social-area{
+    display: block !important;
+    overflow: hidden;
+    padding:20px 0 25px;
+    text-transform: capitalize;
+}
+#login-wrap .social-area .title{
+    display: block;
+    margin:0 0 25px;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #5a566e;
+}
+#login-wrap .social-area .holder{
+    overflow: hidden;
+    width: auto;
+}
+#login-wrap .social-area .holder a,
+#login-wrap .social-area .holder .gmail{
+    display: block;
+    margin: 0 auto 10px;
+    padding:13px 40px;
+    background: #3f5a9c;
+    color: #fff;
+    border: none;
+    outline: none;
+    min-width: 179px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 22px;
+}
+#login-wrap .social-area .holder .gmail{
+    background: #d64a3d;
+}
+#login-wrap .footer{
+    padding:23px 10px;
+    text-align: center;
+    color: #b8b2c5;
+    font-size: 20px;
+    line-height: 22px;
+    border-radius: 0 0 20px 20px;
+    background:#fff url(../../images/login/bg-footer.png) no-repeat 50%	-222px;
+}
+.jcf-select{ padding:0 !important;}
+.jcf-select .jcf-select-text{ font-size:15px !important;}
+#login-wrap .footer a{color:#fff;}
+
+/*REGISTER STYLE*/
+
+#register-wrap{
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+#register-wrap .main-holder{
+    overflow: hidden;
+    padding: 0;
+    display: table-cell;
+    vertical-align: middle;
+}
+#register-wrap .main-holder .heading-area{
+    overflow: hidden;
+    text-align: center;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+}
+#register-wrap .main-holder .heading-area .heading{
+    font-size: 33px;
+    line-height: 36px;
+    color: #fff;
+    display: block;
+}
+#register-wrap .holder{
+    overflow: hidden;
+    width:890px;
+    margin: 0 auto;
+}
+
+#register-wrap .holder .logo{
+    background:url(../../images/login/logo.png) no-repeat 50% 100%;
+    background-size:13%;
+    height:110px;
+    width:100%;
+    text-indent: -9999px;
+    display: block;
+}
+#register-wrap .holder .logo a{
+    display: block;
+    /*height: 100%;*/
+}
+#register-wrap .holder .wrapper{
+    background: #f7f7f8;
+    border-radius: 14px;
+    margin: 0 auto 20px;
+}
+#register-wrap .holder .form-wrap{
+    overflow: hidden;
+    padding:0 4% 0;
+}
+#register-wrap .holder .row{margin: 0 0 10px;}
+#register-wrap .holder .row.row-radio{margin:0 0 -5px;}
+#register-wrap .holder .row:after{
+    content: '';
+    display:block;
+    clear: both;
+}
+#register-wrap .holder .input-wrap.file{padding: 0;}
+#register-wrap .holder .input-wrap:first-child{ float: left;}
+#register-wrap .holder .input-wrap{
+    float: right;
+    background: #fff;
+    border: 1px solid #dbd7e3;
+    padding: 2px 10px;
+    font-size: 24px !important;
+    color: #8f86a3;
+    line-height: 28px;
+    width: 400px;
+    position: relative;
+}
+#register-wrap .holder .input-wrap-error{border: 1px solid #e3282b !important;}
+#register-wrap .holder .input-wrap-focus{ border: 1px solid #aaa !important;}
+#register-wrap .holder .input-wrap.file:after,
+#register-wrap .holder .input-wrap:after{
+    content: '';
+    display:block;
+    clear: both;
+}
+#register-wrap .holder .input-wrap input[type="text"],
+#register-wrap .holder .input-wrap input[type="password"],
+#register-wrap .holder .input-wrap input[type="number"],
+#register-wrap .holder .input-wrap input[type="email"]{
+    width: 100%;
+    outline: none;
+    border: 0;
+    padding:2px 0;
+    font-size: 15px !important;
+    color: #8f86a3;
+    line-height: 22px;
+    font-weight: normal !important;
+}
+/*	#register-wrap .holder select{
+                border: none;
+                outline: none;
+                width: 100%;
+                font-size: 18px !important;
+                line-height: 22px;
+                color: #8f86a3;
+                padding:3px 10px 4px;
+        }*/
+#register-wrap .sign-area{
+    overflow: hidden;
+    font-size: 20px;
+    line-height: 24px;
+    padding: 11px 0 17px;
+    border-bottom: 1px solid #dbd7e3;
+}
+#register-wrap .sign-area .sign-btn{
+    float: right;
+    padding:18px 50px;
+    background: #37277f;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+}
+#register-wrap .sign-area .forgot{
+    display:inline-block;
+    vertical-align: middle;
+    padding: 21px 10px 0 0;
+    text-transform: capitalize;
+}
+#register-wrap .social-area{
+    overflow: hidden;
+    padding:15px 0 17px;
+    text-transform: capitalize;
+}
+#register-wrap .social-area .title{
+    display: block;
+    margin:0 0 25px;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #5a566e;
+}
+#register-wrap .social-area .holder{
+    overflow: hidden;
+    width: auto;
+}
+#register-wrap .social-area .holder a,
+#register-wrap .social-area .holder .gmail{
+    display: inline-block;
+    vertical-align: middle;
+    padding:18px 45px;
+    background: #3f5a9c;
+    color: #fff;
+    border: none;
+    outline: none;
+    min-width: 179px;
+    border-radius: 40px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 22px;
+}
+#register-wrap .social-area .holder .gmail{
+    background: #d64a3d;
+    float: right;
+}
+#register-wrap .footer{
+    padding:23px 10px;
+    text-align: center;
+    color: #b8b2c5;
+    font-size: 16px;
+    line-height: 22px;
+    border-radius: 0 0 10px 10px;
+    background-size: 100%;
+    background:#fff url(../../images/login/bg-footer.png) repeat 50% -222px;
+}
+#register-wrap .footer a{color:#fff;}
+#login-wrap.change-pswd .holder .input-wrap input[type="text"],
+#login-wrap.change-pswd .holder .input-wrap input[type="password"]{
+    background: #fff;
+    padding:3px 10px 4px;
+}
+
+#register-wrap .holder .input-wrap.day{ width: 16%;   }
+#register-wrap .holder .input-wrap.month{ width: 17%;   }
+#register-wrap .holder .input-wrap.year{ width: 16%;   }
+.input-wrap-radio{
+    border: 0 !important;
+    background: none !important;
+}
+.btn-radio-holder{
+    float: left;
+    width: 50%;
+    font-size:15px !important;
+    line-height:18px !important;
+    padding: 7px 0 0;
+}
+.btn-radio-holder .jcf-radio{
+    float: left !important;
+    height: 18px !important;
+    width:  18px !important;
+    margin:0 15px 0 0!important;
+    vertical-align: middle !important;
+}
+.btn-radio-holder label{
+    float: left;
+    vertical-align: middle !important;
+}
+.ui-datepicker{ width: 375px !important;}
+.jcf-upload-button{
+    background: #3f5a9c !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    margin: 0 !important;
+    border: 0 !important;
+}
+.jcf-upload-button:hovre{background: #233258 !important;}
+.my-register{ float: right !important;}
+.my-label{ line-height: 50px !important;   float: left;   }
+.back-holder{text-align:center;}
+.back-holder-login .back,
+.back-holder .back{
+    padding:20px 5px 0;
+    font-size:22px;
+    color:#fff;
+}
+.back-holder-login{
+    text-align:left;
+    padding:0 30px;
+}
+.input-wrap img{
+    height:80px !important;
+    width:80px !important;
+    margin: 0 0 0 -10px;
+}
+.myselect{
+    width:31% !important;
+    padding:0 0 0 5px !important;
+    display:inline-block !important;
+    border-left:1px solid #ccc;
+}
+.myselect .jcf-select{ height:20px !important;}
+.myselect:first-child{ border:0;}
+.jcf-select .jcf-select-text{ line-height:22px !important;}
+.rc-anchor-light{ border:0 !important;}
+/*register end*/
+
+
+
+.myrow{ display:none;}
+.no-border.input-wrap{border:0 !important;}
+.my-register01{ display:none !important;}
+.myfile.input-wrap{
+    border:0 !important;
+    overflow:hidden;
+}
+.myfile .jcf-file{
+    width:73% !important;
+    background: #fff;
+    border: 1px solid #dbd7e3;
+    float:left;
+    margin:0;
+}
+.myfile .myimg{float:right;}
+.myfile .myimg img{margin:0 !important;}
+.mysubmitholder{margin:20px 0 10px !important;}
+.mysubmit{float:right; margin:0 !important;}
+.myallignright{ text-align:right;}
+@media only screen and (max-width:1500px){}
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    #login-wrap{
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        display: table;
+    }
+    #login-wrap .main-holder{
+        overflow: hidden;
+        padding:0;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    #login-wrap .main-holder .heading-area{
+        overflow: hidden;
+        text-align: center;
+        margin: 0 0 20px;
+        text-transform: uppercase;
+    }
+    #login-wrap .main-holder .heading-area .heading{
+        font-size: 30px;
+        line-height: 33px;
+        color: #fff;
+        display: block;
+    }
+    #login-wrap .holder{
+        overflow: hidden;
+        width:490px;
+        margin: 0 auto;
+    }
+    #login-wrap .holder .logo{
+        background:url(../../images/login/logo.png) no-repeat 74% 100%;
+        background-size: 35%;
+        height:115px;
+        width:80%;
+        text-indent: -9999px;
+        display: block;
+    }
+    #login-wrap .holder .logo a{
+        display: block;
+        /*height: 100%;*/
+    }
+    #login-wrap .holder .wrapper{
+        background: currentColor;
+        border-radius: 0px;
+        margin: 0 auto 20px;
+    }
+    #login-wrap .holder .form-wrap{
+        overflow: hidden;
+        padding:30px 7% 26px;
+    }
+    #login-wrap .holder .input-wrap{
+        background: #fff;
+        border: 1px solid #dbd7e3;
+        padding: 5px 11px;
+        font-size: 24px !important;
+        text-transform: capitalize;
+        color: #8f86a3;
+        line-height: 28px;
+        margin: 0 0 20px;
+        position: relative;
+    }
+    #login-wrap .holder .input-wrap input[type="text"],
+    #login-wrap .holder .input-wrap.pswd input[type="text"]{
+        background:#fff url(../../images/login/ico2.png) no-repeat 10px 4px;
+        width: 100%;
+        outline: none;
+        border: 0;
+        padding:3px 10px 4px 42px;
+        font-size: 18px !important;
+        text-transform: capitalize;
+        color: #8f86a3;
+        line-height: 26px;
+        font-weight: normal !important;
+    }
+    #login-wrap .holder .input-wrap.pswd input[type="text"]{
+        background:#fff url(../../images/login/ico3.png) no-repeat 10px 4px;
+    }
+    #login-wrap .sign-area{
+        overflow: hidden;
+        font-size: 20px;
+        line-height: 24px;
+        padding: 11px 0 17px;
+        border-bottom: 1px solid #dbd7e3;
+    }
+    #login-wrap .mysign-area{ border:0 !important;}
+    #login-wrap .sign-area .sign-btn{
+        float: right;
+        padding:12px 45px;
+        background: #0095b7;
+        text-transform: uppercase;
+        color: #fff;
+        border: none;
+        outline: none;
+        border-radius: 0px;
+    }
+    #login-wrap .sign-area .forgot{
+        float: left;
+        margin: 0 0 0 20px;
+        font-size: 16px;
+        line-height: 18px;
+        padding: 16px 10px 0 0;
+        text-transform: capitalize;
+    }
+    #login-wrap .social-area{
+        overflow: hidden;
+        padding:5px 0;
+        text-transform: capitalize;
+    }
+    #login-wrap .social-area .title{
+        display: block;
+        margin:0 0 25px;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #5a566e;
+    }
+    #login-wrap .social-area .holder{
+        overflow: hidden;
+        width: auto;
+    }
+    #login-wrap .social-area .holder a,
+    #login-wrap .social-area .holder .gmail{
+        display: inline-block;
+        vertical-align: middle;
+        padding:12px 40px;
+        background: #3f5a9c;
+        color: #fff;
+        border: none;
+        outline: none;
+        min-width: 179px;
+        text-align: center;
+        font-size: 20px;
+        line-height: 22px;
+        border-radius: 5px;
+    }
+    #login-wrap .social-area .holder .gmail{
+        background: #d64a3d;
+        float: right;
+    }
+    #login-wrap .footer{
+        padding:15px 10px;
+        text-align: center;
+        color: #b8b2c5;
+        font-size: 20px;
+        line-height: 22px;
+        border-radius: 0 0 10px 10px;
+        background:#fff url(../../images/login/bg-footer.png) no-repeat 50%	-222px;
+    }
+    #login-wrap .footer a{color:#fff;}
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {}
+@media (max-width: 992px) {
+    body{ min-width:320px !important;}
+    #register-wrap .holder{ width:95%;}
+    #register-wrap .holder .input-wrap{ width:48%;}
+}
+@media (max-width: 767px) {
+    #register-wrap .holder .row{ margin:0;}
+    #register-wrap .holder .input-wrap{
+        width:100%;
+        margin:0 0 10px;
+        overflow:hidden !important;		
+    }
+    .myrow{
+        display:block;
+        margin:0 0 10px !important;
+    }
+    .myrow img{
+        height:80px;
+        width:80px;
+    }
+    .pfimageholder{ display:none !important;}
+    .my-register{ display:none !important;	}
+    .my-register01{ display:block !important;	}
+    .myallignright {
+        text-align: left;
+    }
+    #register-wrap .holder input[type="submit"]{ margin:10px 0 0;}
+}
+@media (max-width:639px) {
+    .my-label{
+        line-height:35px !important;
+        text-align:center;
+    }
+}
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}
+
+.div-wrap,
+.div-wrap.margin{
+    position: relative;
+    overflow: hidden;
+    height: 25px;
+}
+.div-wrap.margin{margin: 5px 0;}
+.errormsg,
+.successmsg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    font-size: 10px;
+    line-height: 11px;
+    padding:10px 20px 0;
+    background-color: rgba(244, 179, 179, 0.8);
+    color: rgba(244, 179, 179, 0.8);
+    color:#405a9d;
+    font-weight: normal;
+    overflow: hidden;
+    text-align: center;
+}
+.successmsg{
+    background-color: rgba(215, 246, 197, 0.8);
+    color: rgba(215, 246, 197, 0.8);
+    color:#405a9d;
+}
+.errormsg center,
+.successmsg center{ background: none;}
+
+#dp-img-div{
+    background: none !important;
+    border: none !important;
+}
+

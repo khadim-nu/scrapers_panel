@@ -1,0 +1,517 @@
+* { max-height: 100000px; }
+body {
+	background: #fff;
+	color: #89949b;
+	font: 12px/15px "Lucida Grande", "Lucida Sans", sans-serif;
+	margin: 0;
+	min-width: 320px;
+	min-width: 999px;
+}
+a { 
+	color: #4b5c66;
+	text-decoration: none;
+	outline: none !important;
+}
+a:hover {
+	text-decoration: underline;
+	color: #4b5c66;
+}
+img { border-style: none; }
+form,
+fieldset {
+	border-style: none;
+	margin: 0;
+	padding: 0;
+}
+input,
+textarea,
+select {
+	color: #4c505d;
+	font: 12px/15px "Lucida Grande", "Lucida Sans", sans-serif;
+	vertical-align: middle;
+} 
+h1{
+	margin: 0 0 5px;
+	padding: 0;
+	color: #4b5c66;
+	font-size: 24px;
+	line-height: 27px;
+	text-transform: capitalize;
+}
+h2{
+	margin: 0 0 0;
+	padding: 0;
+	color: #4b5c66;
+	font-size: 20px;
+	line-height: 23px;
+	text-transform: capitalize;
+}
+h3{
+	margin: 0 0 0;
+	padding: 0;
+	color: #4b5c66;
+	font-size: 20px;
+	line-height: 23px;
+	text-transform: capitalize;
+}
+/**/
+
+/*Date Picker style*/
+.ui-widget-content{
+	background: #fff !important;
+	border: 1px solid #dbd7e3 !important;
+	color: #8f86a3 !important;
+}
+.ui-widget-header{
+	color: #8f86a3 !important;
+	background: #f6f6f6 !important;
+}
+.ui-widget-header .ui-datepicker-next,
+.ui-widget-header .ui-datepicker-next:hover,
+.ui-widget-header .ui-datepicker-prev{
+    background-image: none !important;
+    background:#8f86a3 url(../images/next-11.png) 50% 50% no-repeat !important;
+}
+.ui-widget-header .ui-datepicker-prev,
+.ui-widget-header .ui-datepicker-prev:hover{ background:#8f86a3 url(../images/prev-11.png) 50% 50% no-repeat !important;}
+.ui-state-disabled, .ui-widget-content .ui-state-disabled,
+.ui-state-disabled{color: #dbd7e3 !important;}
+.ui-state-hover, .ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover, .ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus{ background: none !important;}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+	background: #fff !important;
+	text-align: center !important;
+	border: 1px solid #f2f2f2 !important;
+}
+.ui-datepicker td{ text-align: center !important;}
+
+/*Date Picker End*/
+
+/*----------------------------------------------------------------*/
+
+/* custom checkbox styles */
+.jcf-checkbox {
+	vertical-align: middle;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	cursor: default;
+	background: #fff;
+	border: 1px solid #777;
+	margin: 0 3px 0 0;
+	height: 16px;
+	width: 16px;
+}
+.jcf-checkbox span{
+	position:absolute;
+	display:none;
+	height:4px;
+	width:8px;
+	top:50%;
+	left:50%;
+	margin:-7px 0 0 -6px;
+	border:3px solid #777;
+	border-width:0 0 3px 3px;
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865483, M12=0.7071067811865467, M21=-0.7071067811865467, M22=0.7071067811865483, SizingMethod='auto expand')";
+}
+:root .jcf-checkbox span {margin:-4px 0 0 -5px;}
+.jcf-checkbox input[type="checkbox"] {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	margin: 0;
+	left: 0;
+	top: 0;
+}
+.jcf-checkbox.jcf-checked span{display:block;}
+/* custom radio styles */
+.jcf-radio {
+	vertical-align: middle;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	cursor: default;
+	background: #fff;
+	border: 1px solid #777;
+	border-radius: 9px;
+	margin: 0 3px 0 20px;
+	height: 16px;
+	width: 16px;
+}
+.jcf-radio span{
+	display:none;
+	position:absolute;
+	top:3px;
+	left:3px;
+	right:3px;
+	bottom:3px;
+	background:#777;
+	border-radius:100%;
+}
+.jcf-radio input[type="radio"] {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	border: 0;
+	margin: 0;
+	left: 0;
+	top: 0;
+}
+.jcf-radio.jcf-checked span {display:block;}
+/* custom select styles */
+.jcf-select {
+	border:none !important;
+	position: relative;
+	overflow: hidden;
+	cursor: default;
+	height: 26px;
+	font-size: 18px;
+ 	line-height:28px;
+	float: left;
+	margin:2px 0 !important;
+	width: 100% !important;
+	padding: 0 20px 000 10px;
+}
+.jcf-select select {
+	z-index: 1;
+	left: 0;
+	top: 0;
+}
+.jcf-select .jcf-select-text {
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	cursor: default;
+	display: block;
+	font-size: 18px;
+	line-height: 22px;
+	line-height: 26px;
+	margin: 1px 15px 0 0px;
+}
+.jcf-select .jcf-select-opener {
+	background:#fff url(../images/ico-down.png) 50% 56% no-repeat;
+	position: absolute;
+	height: 26px;
+	width: 22px;
+	right: 0;
+	top: 0;
+}
+body > .jcf-select-drop {
+	position: absolute;
+	margin: -1px 0 0;
+	z-index: 999;
+}
+body > .jcf-select-drop.jcf-drop-flipped {
+	margin: 1px 0 0;
+}
+.jcf-select .jcf-select-drop {
+	position: absolute;
+	margin-top: 0px;
+	z-index: 999;
+	top: 100%;
+	left: -1px;
+	right: -1px;
+}
+.jcf-select .jcf-drop-flipped {
+	bottom: 100%;
+	top: auto;
+}
+.jcf-select-drop .jcf-select-drop-content {
+	border: 1px solid #dbd7e3 !important;
+	overflow: hidden;
+	height: 1%;
+	font-size: 18px;
+	line-height: 24px;
+	color:#8f86a3 !important;
+	border-radius: 0 0 5px 5px;
+}
+/* multiple select styles */
+.jcf-list-box {
+	overflow: hidden;
+	display: inline-block;
+	border: 1px solid #b8c3c9;
+	min-width: 200px;
+	margin: 0 15px;
+}
+/* select options styles */
+.jcf-list {
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	background: #fff;
+	line-height: 14px;
+	font-size: 12px;
+	width: 100%;
+}
+.jcf-list .jcf-list-content {
+	vertical-align: top;
+	display: inline-block;
+	overflow: auto;
+	width: 100%;
+}
+.jcf-list ul {
+	list-style: none;
+	padding: 7px 0 0;
+	margin: 0;
+}
+.jcf-list ul li {
+	overflow: hidden;
+	display: block;
+	text-decoration: none;
+	padding: 2px 0;
+	display: block;
+	cursor: default;
+	color: #8f86a3;
+	height: 1%;
+	text-transform: capitalize;
+}
+.jcf-list .jcf-overflow {
+	overflow: auto;
+}
+.jcf-list .jcf-option {
+	white-space: nowrap;
+	overflow: hidden;
+	cursor: default;
+	display: block;
+	padding: 10px 9px;
+	color: #656565;
+	height: 1%;
+}
+.jcf-list .jcf-disabled {
+	background: #fff !important;
+	color: #aaa !important;
+}
+.jcf-select-drop .jcf-hover,
+.jcf-list-box .jcf-selected {
+	background: #8f86a3;
+	color: #fff;
+}
+.jcf-list .jcf-optgroup-caption {
+	white-space: nowrap;
+	font-weight: bold;
+	display: block;
+	padding: 5px 9px;
+	cursor: default;
+	color: #000;
+}
+.jcf-list .jcf-optgroup .jcf-option {
+	padding-left: 30px;
+}
+/* custom textarea styles */
+.jcf-textarea {
+	border: 1px solid #b8c3c9;
+	box-sizing: content-box;
+	display: inline-block;
+	position: relative;
+}
+.jcf-textarea .jcf-scrollbar-horizontal {
+	display: none;
+	height: 0;
+}
+.jcf-textarea textarea {
+	padding: 8px 10px;
+	border: none;
+	margin: 0;
+}
+.jcf-textarea .jcf-resize {
+	position: absolute;
+	text-align: center;
+	cursor: se-resize;
+	background: #e3e3e3;
+	font-weight: bold;
+	line-height: 15px;
+	text-indent: 1px;
+	font-size: 12px;
+	height: 15px;
+	width: 14px;
+	bottom: 0;
+	right: 0;
+}
+.jcf-textarea .jcf-resize:before {
+	border: 1px solid #000;
+	border-width: 0 1px 1px 0;
+	display: block;
+	margin: 4px 0 0 3px;
+	width: 6px;
+	height: 6px;
+	content: '';
+}
+/* custom file input styles */
+.jcf-file {
+	display: inline-block;
+	white-space: nowrap;
+	position: relative;
+	width:100%;
+        clear: both;
+}
+.jcf-file:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+/*.jcf-file:after{
+	content: '';
+	display: block;
+	clear: both;
+}*/
+.jcf-file .jcf-real-element {
+	position: absolute;
+	font-size: 20px;
+	height:100%;
+        width:100%;
+	margin: 0;
+	right: 0;
+	top: 0;
+}
+.jcf-file .jcf-fake-input {
+	display: inline-block;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	vertical-align: top;
+	padding:8px 16px;
+	font-size: 15px;
+	line-height: 18px;
+	width:100%;
+        overflow: hidden;
+}
+.jcf-file .jcf-upload-button {
+	display: inline-block;
+	vertical-align: top;
+	white-space: nowrap;
+	border: 1px solid #777;
+	margin: 0 0 0 -1px;
+	line-height: 28px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 15px;
+	line-height: 20px;
+	border: 1px solid #dbd7e3;
+	padding:8px 19px;
+	color: #8f86a3;
+	background:#fff;
+	cursor: pointer !important;
+	margin:-1px -1px 0 0;
+}
+.jcf-file .jcf-upload-button:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.rc-anchor-light{ border:0 !important;}
+/* custom scrollbars styles */
+.jcf-scrollable-wrapper {
+	box-sizing: content-box;
+	position: relative;
+}
+.jcf-scrollbar-vertical {
+	position: absolute;
+	cursor: default;
+	background: #e3e3e3;
+	width: 14px;
+	bottom: 0;
+	right: 0;
+	top: 0;
+}
+.jcf-scrollbar-vertical .jcf-scrollbar-dec,
+.jcf-scrollbar-vertical .jcf-scrollbar-inc {
+	background: #bbb;
+	height: 14px;
+	width: 14px;
+	left: 0;
+	top: 0;
+}
+.jcf-scrollbar-vertical .jcf-scrollbar-inc {
+	top: auto;
+	bottom: 0;
+}
+.jcf-scrollbar-vertical .jcf-scrollbar-handle {
+	background: #888;
+	height: 1px;
+	width: 14px;
+}
+.jcf-scrollbar-horizontal {
+	position: absolute;
+	background: #e3e3e3;
+	right: auto;
+	top: auto;
+	left: 0;
+	bottom: 0;
+	width: 1px;
+	height: 14px;
+}
+.jcf-scrollbar-horizontal .jcf-scrollbar-dec,
+.jcf-scrollbar-horizontal .jcf-scrollbar-inc {
+	display: inline-block;
+	vertical-align: top;
+	overflow: hidden;
+	background: #bbb;
+	height: 14px;
+	width: 14px;
+}
+.jcf-scrollbar-horizontal .jcf-scrollbar-inc {
+	left: auto;
+	right: 0;
+}
+.jcf-scrollbar-horizontal .jcf-scrollbar-slider {
+	display: inline-block;
+	position: relative;
+	height: 14px;
+}
+.jcf-scrollbar-horizontal .jcf-scrollbar-handle {
+	position: absolute;
+	background: #888;
+	height: 14px;
+}
+.jcf-scrollbar.jcf-inactive .jcf-scrollbar-handle {
+	visibility: hidden;
+}
+.jcf-scrollbar.jcf-inactive .jcf-scrollbar-dec, 
+.jcf-scrollbar.jcf-inactive .jcf-scrollbar-inc {
+	background: #e3e3e3;
+}
+/* common custom form elements styles */
+.jcf-disabled {background: #ddd !important;}
+.jcf-focus, .jcf-focus * {border-color:none !important;}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+	color: #8f86a3;
+	opacity: 1;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color: #8f86a3;
+	opacity: 1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color: #8f86a3;
+	opacity: 1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+	color: #8f86a3;
+}
+::-moz-placeholder {
+ opacity: 1;
+}
+#err{
+    position: absolute;
+    top: -24px;
+    left: 0;
+    font-size: 12px;
+    line-height: 14px;
+    color:red;
+    z-index: 999999;
+}
+#err span{
+    background: #f3f3f3;
+    padding:4px 10px;
+    min-width: 200px;
+    display:inline-block;
+    
+}
