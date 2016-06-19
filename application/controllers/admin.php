@@ -23,10 +23,10 @@ class Admin extends MY_Controller {
             redirect('admin/login');
         }
     }
-    public function scrape_data() {
+    public function scrape_items() {
         if (is_admin()) {
             $data['user_role'] = 'admin';
-            $data['title'] = 'Dashboard';
+            $data['title'] = 'scrape items';
             $this->load->view('admin/dashboard', $data);
         } else {
             redirect('admin/login');

@@ -47,13 +47,17 @@ class MY_Model extends CI_Model {
         return $query->get($this->table_name)->result_array();
     }
 
-    public function get_all_custom_where($where, $select = FALSE) {
+    public function get_all_custom_where($where=false, $select = FALSE,$table=FALSE) {
         $query = $this->db;
         if ($select) {
             $query = $query->select($select);
         }
-        $query = $query->where($where);
+        if($where)
+            $query = $query->where($where);
+        if(!$table)
         return $query->get($this->table_name)->result_array();
+    else 
+         return $query->get($table)->result_array();
     }
 
     public function extract_from_array($array, $column) {
