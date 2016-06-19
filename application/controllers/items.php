@@ -11,8 +11,12 @@ class Items extends MY_Controller {
     }
 
     public function thesource_scraper() {
-        $out = shell_exec('java -jar /var/www/yazzoopa-scraper/scrapping_tools/thesource_scraper.jar');
-      redirect('items/thesource');
+        $call='java -jar /var/www/yazzoopa-scraper/scrapping_tools/loc_thesource.jar';
+        //$out = shell_exec($call);
+         $output=""; $return=FALSE;
+        exec($call, $output, $return);
+        var_dump($return);die;
+        //redirect('items/thesource');
     }
     public function index() {
         if (is_admin()) {
