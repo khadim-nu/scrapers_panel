@@ -54,6 +54,7 @@ class MY_Model extends CI_Model {
         }
         if($where)
             $query = $query->where($where);
+        $query=$query->order_by("id","desc");
         if(!$table)
         return $query->get($this->table_name)->result_array();
     else 
