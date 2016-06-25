@@ -11,26 +11,35 @@ class Items extends MY_Controller {
     }
 
     public function thesource_scraper() {
-        $command='java -jar /var/www/yazzoopa-scraper/scrapping_tools/aws_thesource.jar';
-         $output = shell_exec($command);
-        redirect('items/thesource');
+        $command = 'java -jar /var/www/yazzoopa-scraper/scrapping_tools/thesource_scraper.jar';
+        $output = shell_exec($command);
+        redirect('items');
     }
+
+    public function gianttiger_scraper() {
+        $command = 'java -jar /var/www/yazzoopa-scraper/scrapping_tools/gianttiger_scraper.jar';
+        $output = shell_exec($command);
+        redirect('items');
+    }
+
     public function index() {
         if (is_admin()) {
-            $data['title'] = 'Index';
-            $this->load->view('items/index', $data);
+            $data['data'] = $this->Items_model->get_all_custom_where($where = false, $select = FALSE, $table = "items");
+            $data['title'] = 'Items Items';
+            $this->load->view('items/show', $data);
         } else {
             redirect('admin/login');
         }
     }
-    
+
     public function thesource() {
         if (is_admin()) {
-            $data['data'] = $this->Items_model->get_all_custom_where($where=false, $select = FALSE,$table="thesource");
+            $data['data'] = $this->Items_model->get_all_custom_where($where = false, $select = FALSE, $table = "items");
             $data['title'] = 'Thesource Items';
-            $this->load->view('items/thesource', $data);
+            $this->load->view('items/show', $data);
         } else {
             redirect('welcome');
         }
     }
+
 }

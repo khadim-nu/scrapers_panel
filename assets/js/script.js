@@ -88,11 +88,15 @@ function  get_month(month) {
             break;
             Default:
                     return "";
-            
+
     }
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
+
+    $('body').on('click', '.btn_wrap_a', function () {
+        $(".loading-sheet").show();
+    });
 
 
     $("#password-reset").parsley({trigger: "keypress"});
@@ -105,13 +109,13 @@ $(document).ready(function() {
     $("#send-message").parsley({trigger: "keypress"});
     $("#withdraw").parsley({trigger: "keypress"});
 
-    $(function() {
+    $(function () {
         $.datepicker.setDefaults({
             beforeShow: customRange,
             dateFormat: 'yy-mm-dd',
             firstDay: 1,
             changeFirstDay: false,
-            onSelect: function() {
+            onSelect: function () {
                 this.onchange();
                 this.onblur();
             }
@@ -130,8 +134,7 @@ $(document).ready(function() {
                 if (dateMin < min) {
                     dateMin = min;
                 }
-            }
-            else
+            } else
             {
                 dateMin = new Date();
                 dateMax = new Date(dateMin.getFullYear(), dateMin.getMonth(), dateMin.getDate() + dayRange);
@@ -148,13 +151,11 @@ $(document).ready(function() {
                     dateMin = new Date();
                 }
                 dateMax = new Date(dateMin.getFullYear(), dateMin.getMonth(), dateMin.getDate() + dayRange);
-            }
-            else {
+            } else {
                 dateMin = new Date();
                 dateMax = new Date(dateMin.getFullYear(), dateMin.getMonth(), dateMin.getDate() + dayRange);
             }
-        }
-        else if (input.id === "datepicker2") {
+        } else if (input.id === "datepicker2") {
             dateMax = new Date();
         }
         return {
@@ -165,19 +166,19 @@ $(document).ready(function() {
 //////////////////////////////////////////////////////////
 
     // Form Submit button disabler
-    $('#withdraw').submit(function() {
+    $('#withdraw').submit(function () {
         $(this).parent('form').submit();
         $(this).hide();
         $(this).after('<span class="disabled-text">Please Wait<span>');
         $(this).parent('form :input').prop('disabled', true);
     });
 
-    $( '.show_child_div' ).hide();
-    $( '.show_child' ).click(function() {
-        $( this ).next('.show_child_div').toggle();
+    $('.show_child_div').hide();
+    $('.show_child').click(function () {
+        $(this).next('.show_child_div').toggle();
     });
 
-    $(function() {
+    $(function () {
         if ($('#active_players').length > 0 || $('#active_competitions').length > 0) {
             var players = document.getElementById('aplayers');
             var player_counts = players.getAttribute('data-player');
@@ -264,7 +265,7 @@ $(document).ready(function() {
         }
     });
 /////////// fading error message/////////////////////////////////////////////
-    setTimeout(function() {
+    setTimeout(function () {
         $('.errormsg,.successmsg').fadeOut('slow');
     }, 4000); // <-- time in milliseconds
 
@@ -274,7 +275,7 @@ $(document).ready(function() {
     $('.modal-game-portal').dialog();
 
 
-    $("input[type='number']").keypress(function(e) {
+    $("input[type='number']").keypress(function (e) {
         //if the letter is not digit then display error and don't type anything
 
         if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
@@ -282,21 +283,21 @@ $(document).ready(function() {
             return false;
         }
     });
-    
-    $( '.add_more_emails' ).click(function(){
-        $( '.rows' ).append('<div class="parent_div"><input type="email" name="emails[]" data-parsley-required data-type="integer" /><a href="javascript:" class="remove_emails">remove</a></div>');
+
+    $('.add_more_emails').click(function () {
+        $('.rows').append('<div class="parent_div"><input type="email" name="emails[]" data-parsley-required data-type="integer" /><a href="javascript:" class="remove_emails">remove</a></div>');
     });
-    
-    $( 'body' ).on('click', '.remove_emails', function () {
-        $( this ).parent('.parent_div').remove();
+
+    $('body').on('click', '.remove_emails', function () {
+        $(this).parent('.parent_div').remove();
     });
-    
-     ///////////////////
-    $("#profileImage").on("change", function()
+
+    ///////////////////
+    $("#profileImage").on("change", function ()
     {
         $('.dp-img').attr("src", URL.createObjectURL(this.files[0]));
     });
     //////////////////
-    
+
 
 });
