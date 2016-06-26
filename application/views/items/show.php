@@ -18,6 +18,7 @@
                                 ?>
                                 <p><strong>product title:</strong> <?= $row['title']; ?></p>
                                 <p><strong>product id:</strong> <?= $row['p_id']; ?></p>
+                                <p><strong>category:</strong> <?= $row['category']; ?></p>
                                 <p>
                                     <img src="<?= $row['image_url']; ?>" height="200px" width="300px" />
                                 </p>
