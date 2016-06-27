@@ -66,7 +66,7 @@ class Items extends MY_Controller {
             $buynow_qty = 1;
             $buynow_qty_lot = 1;
             $project_details = "public";
-            $filtered_auctiontype = "regular";
+            $filtered_auctiontype = "fixed";
             $currency = "CAD";
             $city = "Toronto";
             $state = "Ontario";
