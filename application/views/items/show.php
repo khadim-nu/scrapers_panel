@@ -24,7 +24,9 @@
                                 </p>
                                 <p><strong>product link:</strong> <a href="<?= $row['link']; ?>"><?= $row['link']; ?></a></p>
                                 <p><strong>product price: </strong><?= $row['price']; ?></p>
+                                <p><strong>Description:</strong></p>
                                 <p><?= $row['description'] ?></p>
+                                 <p><strong>Specification:</strong></p>
                                 <p><?= $row['specification'] ?></p>
                                 <br><hr>
                                 <br>

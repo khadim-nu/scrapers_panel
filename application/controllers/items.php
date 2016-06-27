@@ -50,21 +50,21 @@ class Items extends MY_Controller {
     }
 
     public function export_items() {
-        
+
         if (is_admin()) {
             $name = 'yazzoopa_items'; //This will be the name of the csv file.
             header('Content-Type: text/csv; charset=utf-8');
             header('Content-Disposition: attachment; filename=' . $name . '.csv');
-
             $output = fopen('php://output', 'wt');
             /*
              * project_title, description, startprice, buynow_price, reserve_price, buynow_qty, buynow_qty_lot,
              * project_details, filtered_auctiontype, cid, sample, currency, city, state, zipcode, country, attributes
              */
-            //   fputcsv($output, array('heading1', 'heading2', 'heading... n')); //The column heading row of the csv file
+//               fputcsv($output, array('heading1', 'heading2', 'heading... n')); //The column heading row of the csv file
             $items = $this->Items_model->get_all();
-            $buynow_qty = 10;
-            $buynow_qty_lot = 10;
+
+            $buynow_qty = 1;
+            $buynow_qty_lot = 1;
             $project_details = "public";
             $filtered_auctiontype = "regular";
             $currency = "CAD";
@@ -73,12 +73,17 @@ class Items extends MY_Controller {
             $zipcode = "M9V5E6";
             $country = "Canada";
             foreach ($items as $key => $value) {
+                $price = explode("$", $value['price']);
+                $price[1]+=4;
+                $startprice = $price[1];
+                $buynow_price = $price[1];
+                $reserve_price = $price[1];
                 $item = array(
                     $value['title'],
                     $value['description'],
-                    $value['price'],
-                    $value['price'],
-                    $value['price'],
+                    $startprice,
+                    $buynow_price,
+                    $reserve_price,
                     $buynow_qty,
                     $buynow_qty_lot,
                     $project_details,
@@ -91,7 +96,6 @@ class Items extends MY_Controller {
                     $zipcode,
                     $country
                 );
-                print_r($item);die;
                 fputcsv($output, $item);
             }
             fclose($output);
