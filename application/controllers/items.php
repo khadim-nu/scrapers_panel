@@ -24,12 +24,12 @@ class Items extends MY_Controller {
 
     public function index() {
         if (is_admin()) {
-           // $data['data'] = $this->Items_model->get_all_custom_where($where = false, $select = FALSE);
-            $ambiguous_alias_select="t1.*, t2.title_eng as category_title";
-            $from_tbl_1="items t1";
+            // $data['data'] = $this->Items_model->get_all_custom_where($where = false, $select = FALSE);
+            $ambiguous_alias_select = "t1.*, t2.title_eng as category_title";
+            $from_tbl_1 = "items t1";
             $join_array = array(
                 array('table' => 'ilance_categories t2', 'condition' => 't1.category = t2.cid', 'direction' => 'left'),
-               );
+            );
             $data['data'] = $this->Items_model->fetch_join_multiple_limit(NULL, NULL, $ambiguous_alias_select, $from_tbl_1, $join_array);
             $data['total'] = $this->Items_model->record_count();
             $data['title'] = 'Show Items';
@@ -44,6 +44,57 @@ class Items extends MY_Controller {
             $data['data'] = $this->Items_model->get_all_custom_where($where = false, $select = FALSE, $table = "items");
             $data['title'] = 'Thesource Items';
             $this->load->view('items/show', $data);
+        } else {
+            redirect('welcome');
+        }
+    }
+
+    public function export_items() {
+        
+        if (is_admin()) {
+            $name = 'yazzoopa_items'; //This will be the name of the csv file.
+            header('Content-Type: text/csv; charset=utf-8');
+            header('Content-Disposition: attachment; filename=' . $name . '.csv');
+
+            $output = fopen('php://output', 'wt');
+            /*
+             * project_title, description, startprice, buynow_price, reserve_price, buynow_qty, buynow_qty_lot,
+             * project_details, filtered_auctiontype, cid, sample, currency, city, state, zipcode, country, attributes
+             */
+            //   fputcsv($output, array('heading1', 'heading2', 'heading... n')); //The column heading row of the csv file
+            $items = $this->Items_model->get_all();
+            $buynow_qty = 10;
+            $buynow_qty_lot = 10;
+            $project_details = "public";
+            $filtered_auctiontype = "regular";
+            $currency = "CAD";
+            $city = "Toronto";
+            $state = "Ontario";
+            $zipcode = "M9V5E6";
+            $country = "Canada";
+            foreach ($items as $key => $value) {
+                $item = array(
+                    $value['title'],
+                    $value['description'],
+                    $value['price'],
+                    $value['price'],
+                    $value['price'],
+                    $buynow_qty,
+                    $buynow_qty_lot,
+                    $project_details,
+                    $filtered_auctiontype,
+                    $value['category'],
+                    $value['image_url'],
+                    $currency,
+                    $city,
+                    $state,
+                    $zipcode,
+                    $country
+                );
+                print_r($item);die;
+                fputcsv($output, $item);
+            }
+            fclose($output);
         } else {
             redirect('welcome');
         }

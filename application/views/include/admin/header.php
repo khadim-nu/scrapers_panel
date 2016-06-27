@@ -21,7 +21,10 @@
             <strong class="logo"><a href="<?= base_url(); ?>"></a></strong>
             <div class="links">
                 <a class="add-game" href="<?= base_url(); ?>admin/scrape_items">Scrape Items</a>
-                 <a class="" href="<?= base_url(); ?>items">Show Scraped Items</a>
+                <a class="" href="<?= base_url(); ?>items">Show Scraped Items</a>
+            </div>
+            <div class="links">
+                <a class="" href="<?= base_url(); ?>items/export_items">Export to CSV</a>
             </div>
         </div>
     </header>
