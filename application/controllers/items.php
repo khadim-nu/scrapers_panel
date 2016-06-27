@@ -24,7 +24,13 @@ class Items extends MY_Controller {
 
     public function index() {
         if (is_admin()) {
-            $data['data'] = $this->Items_model->get_all_custom_where($where = false, $select = FALSE);
+           // $data['data'] = $this->Items_model->get_all_custom_where($where = false, $select = FALSE);
+            $ambiguous_alias_select="t1.*, t2.title_eng as category_title";
+            $from_tbl_1="items t1";
+            $join_array = array(
+                array('table' => 'ilance_categories t2', 'condition' => 't1.category = t2.cid', 'direction' => 'left'),
+               );
+            $data['data'] = $this->Items_model->fetch_join_multiple_limit(NULL, NULL, $ambiguous_alias_select, $from_tbl_1, $join_array);
             $data['total'] = $this->Items_model->record_count();
             $data['title'] = 'Show Items';
             $this->load->view('items/show', $data);
