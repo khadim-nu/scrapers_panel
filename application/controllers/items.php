@@ -30,7 +30,7 @@ class Items extends MY_Controller {
             $join_array = array(
                 array('table' => 'ilance_categories t2', 'condition' => 't1.category = t2.cid', 'direction' => 'left'),
             );
-            $data['data'] = $this->Items_model->fetch_join_multiple_limit(NULL, NULL, $ambiguous_alias_select, $from_tbl_1, $join_array);
+            $data['data'] = $this->Items_model->fetch_join_multiple_limit(NULL, NULL, $ambiguous_alias_select, $from_tbl_1, $join_array, $where = NULL, $group_by = false, $order_by = "t1.id DESC");
             $data['total'] = $this->Items_model->record_count();
             $data['title'] = 'Show Items';
             $this->load->view('items/show', $data);
@@ -49,56 +49,77 @@ class Items extends MY_Controller {
         }
     }
 
+    public function export_to_CSV() {
+
+        if (is_admin()) {
+             $data['title'] = 'Export Items To CSV';
+            $this->load->view('items/export',$data);
+        } else {
+            redirect('welcome');
+        }
+    }
+
     public function export_items() {
 
         if (is_admin()) {
-            $name = 'yazzoopa_items'; //This will be the name of the csv file.
-            header('Content-Type: text/csv; charset=utf-8');
-            header('Content-Disposition: attachment; filename=' . $name . '.csv');
-            $output = fopen('php://output', 'wt');
-            /*
-             * project_title, description, startprice, buynow_price, reserve_price, buynow_qty, buynow_qty_lot,
-             * project_details, filtered_auctiontype, cid, sample, currency, city, state, zipcode, country, attributes
-             */
+            $price_added = $this->input->post('price');
+            if ($price_added >= 0) {
+                $name = 'yazzoopa_items'; //This will be the name of the csv file.
+                header('Content-Type: text/csv; charset=utf-8');
+                header('Content-Disposition: attachment; filename=' . $name . '.csv');
+                $output = fopen('php://output', 'wt');
+                /*
+                 * project_title, description, startprice, buynow_price, reserve_price, buynow_qty, buynow_qty_lot,
+                 * project_details, filtered_auctiontype, cid, sample, currency, city, state, zipcode, country, attributes
+                 */
 //               fputcsv($output, array('heading1', 'heading2', 'heading... n')); //The column heading row of the csv file
-            $items = $this->Items_model->get_all();
+                $items = $this->Items_model->get_all($limit = FALSE, $start = 0, $order_by = "id DESC");
 
-            $buynow_qty = 1;
-            $buynow_qty_lot = 1;
-            $project_details = "public";
-            $filtered_auctiontype = "fixed";
-            $currency = "CAD";
-            $city = "Toronto";
-            $state = "Ontario";
-            $zipcode = "M9V5E6";
-            $country = "Canada";
-            foreach ($items as $key => $value) {
-                $price = explode("$", $value['price']);
-                $price[1]+=4;
-                $startprice = $price[1];
-                $buynow_price = $price[1];
-                $reserve_price = $price[1];
-                $item = array(
-                    $value['title'],
-                    $value['description'],
-                    $startprice,
-                    $buynow_price,
-                    $reserve_price,
-                    $buynow_qty,
-                    $buynow_qty_lot,
-                    $project_details,
-                    $filtered_auctiontype,
-                    $value['category'],
-                    $value['image_url'],
-                    $currency,
-                    $city,
-                    $state,
-                    $zipcode,
-                    $country
-                );
-                fputcsv($output, $item);
+                $buynow_qty = 1;
+                $buynow_qty_lot = 1;
+                $project_details = "public";
+                $filtered_auctiontype = "fixed";
+                $currency = "CAD";
+                $city = "Toronto";
+                $state = "Ontario";
+                $zipcode = "M9V5E6";
+                $country = "Canada";
+
+                foreach ($items as $key => $value) {
+                    $price = explode("$", $value['price']);
+                    $price[1]+=$price_added;
+                    $startprice = $price[1];
+                    $buynow_price = $price[1];
+                    $reserve_price = $price[1];
+                    $item = array(
+                        $value['title'],
+                        $value['description'],
+                        $startprice,
+                        $buynow_price,
+                        $reserve_price,
+                        $buynow_qty,
+                        $buynow_qty_lot,
+                        $project_details,
+                        $filtered_auctiontype,
+                        $value['category'],
+                        $value['image_url'],
+                        $currency,
+                        $city,
+                        $state,
+                        $zipcode,
+                        $country
+                    );
+                    fputcsv($output, $item);
+                }
+
+                fclose($output);
+                $this->session->set_flashdata('message', "Registered Successfully");
+                redirect('items');
+            } else {
+                $this->session->set_flashdata('message', ERROR_MESSAGE . ": Price less than zero.");
+
+                redirect('items/export_to_CSV');
             }
-            fclose($output);
         } else {
             redirect('welcome');
         }
