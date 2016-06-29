@@ -22,7 +22,7 @@ class Items extends MY_Controller {
         redirect('items');
     }
 
-    public function index() {
+    public function show($id=NULL) {
         if (is_admin()) {
             // $data['data'] = $this->Items_model->get_all_custom_where($where = false, $select = FALSE);
             $ambiguous_alias_select = "t1.*, t2.title_eng as category_title";
@@ -30,41 +30,47 @@ class Items extends MY_Controller {
             $join_array = array(
                 array('table' => 'ilance_categories t2', 'condition' => 't1.category = t2.cid', 'direction' => 'left'),
             );
-            $data['data'] = $this->Items_model->fetch_join_multiple_limit(NULL, NULL, $ambiguous_alias_select, $from_tbl_1, $join_array, $where = NULL, $group_by = false, $order_by = "t1.id DESC");
-            $data['total'] = $this->Items_model->record_count();
+            $where = array("t1.p_id like " => "%" . $id . "%");
+            $data['data'] = $this->Items_model->fetch_join_multiple_limit(NULL, NULL, $ambiguous_alias_select, $from_tbl_1, $join_array, $where, $group_by = false, $order_by = "t1.id DESC");
+            $data['total'] = 0;
+            if ($data['data'] && !empty($data['data'])) {
+                $data['total'] = count($data['data']);
+            }
             $data['title'] = 'Show Items';
+            $data['title'] = "Show $id Items";
+            $data["id"] = $id;
             $this->load->view('items/show', $data);
         } else {
             redirect('admin/login');
         }
     }
 
-    public function thesource() {
+    public function index() {
         if (is_admin()) {
             $data['data'] = $this->Items_model->get_all_custom_where($where = false, $select = FALSE, $table = "items");
-            $data['title'] = 'Thesource Items';
-            $this->load->view('items/show', $data);
+            $data['title'] = 'Scraped Items';
+            $this->load->view('items/index', $data);
         } else {
             redirect('welcome');
         }
     }
 
-    public function export_to_CSV() {
+    public function export_to_CSV($id = NULL) {
 
         if (is_admin()) {
-             $data['title'] = 'Export Items To CSV';
-            $this->load->view('items/export',$data);
+            $data['title'] = "Export $id Items To CSV";
+            $data['id'] = $id;
+            $this->load->view('items/export', $data);
         } else {
             redirect('welcome');
         }
     }
 
-    public function export_items() {
-
+    public function export_items($id = NULL) {
         if (is_admin()) {
             $price_added = $this->input->post('price');
             if ($price_added >= 0) {
-                $name = 'yazzoopa_items'; //This will be the name of the csv file.
+                $name = "$id exported-items"; //This will be the name of the csv file.
                 header('Content-Type: text/csv; charset=utf-8');
                 header('Content-Disposition: attachment; filename=' . $name . '.csv');
                 $output = fopen('php://output', 'wt');
@@ -73,7 +79,8 @@ class Items extends MY_Controller {
                  * project_details, filtered_auctiontype, cid, sample, currency, city, state, zipcode, country, attributes
                  */
 //               fputcsv($output, array('heading1', 'heading2', 'heading... n')); //The column heading row of the csv file
-                $items = $this->Items_model->get_all($limit = FALSE, $start = 0, $order_by = "id DESC");
+                
+                $items = $this->Items_model->get_all($limit = FALSE, $start = 0, $order_by = "id DESC", "p_id like ", "%$id%");
 
                 $buynow_qty = 1;
                 $buynow_qty_lot = 1;

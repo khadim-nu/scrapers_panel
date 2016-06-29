@@ -3,7 +3,8 @@
     <?php $this->load->view('include/admin/sidebar'); ?>
     <div id="content">
         <div class="page-head">
-            <span class="page-heading">Total Items:<?= $total; ?></span>
+            <span class="page-heading">Total <?= $id ?> Items:<?= $total; ?></span>
+            <span class="page-heading" id="export_a"><a href="<?= base_url()."items/export_to_CSV/".$id; ?>">Export <?= $id ?> To CSV</a></span>
             <?php $this->load->view('message'); ?>
         </div>
         <div class="table-wrapper">
@@ -26,8 +27,8 @@
                                 <p><strong>product price: </strong><?= $row['price']; ?></p>
                                 <p><strong>Description:</strong></p>
                                 <p><?= $row['description'] ?></p>
-                                 <p><strong>Specification:</strong></p>
-                                <p><?= $row['specification'] ?></p>
+<!--                                <p><strong>Specification:</strong></p>
+                                        <p><?= $row['specification'] ?></p>-->
                                 <br><hr>
                                 <br>
                                 <?php

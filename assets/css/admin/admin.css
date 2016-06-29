@@ -451,6 +451,7 @@ body.admin-page{
 }
 .page-heading{
     text-transform: capitalize;
+    margin-right: 100px;
 }
 .errormsg,
 .successmsg{
@@ -1303,4 +1304,8 @@ hr{
     padding: 8px;
     color: #fff !important;
     font-size: 12px;
+}
+#export_a{
+    text-decoration: underline;
+    font-size: 23px;
 }
