@@ -17,15 +17,15 @@
                             <div class="">
                                 <a href="<?=  base_url();?>items/show/gianttiger" class="btn_wrap_a" >Show items scraped from www.gianttiger.com</a>
                             </div>
-                            <div class="">
+<!--                            <div class="">
                                 <a href="<?=  base_url();?>items/show/factorydirect" class="btn_wrap_a" >Show items scraped from www.factorydirect.ca</a>
-                            </div>
-                            <div class="">
+                            </div>-->
+<!--                            <div class="">
                                 <a href="<?=  base_url();?>items/show/walmart" class="btn_wrap_a" >Show items scraped from www.walmart.ca</a>
-                            </div>
-                            <div class="">
+                            </div>-->
+<!--                            <div class="">
                                 <a href="<?=  base_url();?>items/show/marks" class="btn_wrap_a" >Show items scraped from www.marks.com</a>
-                            </div>
+                            </div>-->
                             <div class="">
                                 <a href="<?=  base_url();?>items/show" class="btn_wrap_a" >Show All Items</a>
                             </div>

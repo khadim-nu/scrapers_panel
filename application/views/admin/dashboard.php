@@ -25,15 +25,15 @@
                             <div class="">
                                 <a href="<?= base_url(); ?>items/gianttiger_scraper" class="btn_wrap_a" >Scrape from www.gianttiger.com</a>
                             </div>
-                            <div class="">
+<!--                            <div class="">
                                 <a href="#" class="btn_wrap_a" >Scrape from www.factorydirect.ca</a>
-                            </div>
-                            <div class="">
+                            </div>-->
+<!--                            <div class="">
                                 <a href="#" class="btn_wrap_a" >Scrape from www.walmart.ca</a>
-                            </div>
-                            <div class="">
+                            </div>-->
+<!--                            <div class="">
                                 <a href="#" class="btn_wrap_a" >Scrape from www.marks.com</a>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </fieldset>
