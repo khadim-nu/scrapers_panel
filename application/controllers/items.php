@@ -73,7 +73,7 @@ class Items extends MY_Controller {
             $reserve_price = $this->input->post('reserve_price');
             $quantity = $this->input->post('quantity');
             $filtered_auctiontype = $this->input->post('auction_type');
-            if ($price_added >= 0) {
+            if ($starting_price >= 0) {
                 $name = "$id exported-items"; //This will be the name of the csv file.
                 header('Content-Type: text/csv; charset=utf-8');
                 header('Content-Disposition: attachment; filename=' . $name . '.csv');
