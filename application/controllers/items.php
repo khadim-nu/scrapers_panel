@@ -22,7 +22,7 @@ class Items extends MY_Controller {
         redirect('items');
     }
 
-    public function show($id=NULL) {
+    public function show($id = NULL) {
         if (is_admin()) {
             // $data['data'] = $this->Items_model->get_all_custom_where($where = false, $select = FALSE);
             $ambiguous_alias_select = "t1.*, t2.title_eng as category_title";
@@ -68,7 +68,11 @@ class Items extends MY_Controller {
 
     public function export_items($id = NULL) {
         if (is_admin()) {
-            $price_added = $this->input->post('price');
+            $starting_price = $this->input->post('starting_price');
+            $buynow_price = $this->input->post('buynow_price');
+            $reserve_price = $this->input->post('reserve_price');
+            $quantity = $this->input->post('quantity');
+            $filtered_auctiontype = $this->input->post('auction_type');
             if ($price_added >= 0) {
                 $name = "$id exported-items"; //This will be the name of the csv file.
                 header('Content-Type: text/csv; charset=utf-8');
@@ -79,13 +83,13 @@ class Items extends MY_Controller {
                  * project_details, filtered_auctiontype, cid, sample, currency, city, state, zipcode, country, attributes
                  */
 //               fputcsv($output, array('heading1', 'heading2', 'heading... n')); //The column heading row of the csv file
-                
+
                 $items = $this->Items_model->get_all($limit = FALSE, $start = 0, $order_by = "id DESC", "p_id like ", "%$id%");
 
-                $buynow_qty = 1;
-                $buynow_qty_lot = 1;
+                $buynow_qty = $quantity;
+                $buynow_qty_lot = $quantity;
                 $project_details = "public";
-                $filtered_auctiontype = "fixed";
+
                 $currency = "CAD";
                 $city = "Toronto";
                 $state = "Ontario";
@@ -94,10 +98,9 @@ class Items extends MY_Controller {
 
                 foreach ($items as $key => $value) {
                     $price = explode("$", $value['price']);
-                    $price[1]+=$price_added;
-                    $startprice = $price[1];
-                    $buynow_price = $price[1];
-                    $reserve_price = $price[1];
+                    $startprice = $price[1] + $starting_price;
+                    $buynow_price = $price[1] + $buynow_price;
+                    $reserve_price = $price[1] + $reserve_price;
                     $item = array(
                         $value['title'],
                         $value['description'],
