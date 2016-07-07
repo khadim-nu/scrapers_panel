@@ -1133,10 +1133,10 @@ table.dataTable.no-footer{border:1px solid #514d95 !important;}
     clear: both;
 }
 #form-wrap .row .input-wrap:first-child{ float: left;}
-#form-wrap .row .input-wrap{
+    #form-wrap .row .input-wrap{
     float: right;
-    background: #fff;
-    border: 1px solid #dbd7e3;
+   // background: #fff;
+   // border: 1px solid #dbd7e3;
     padding: 4px 11px;
     font-size: 18px !important;
     color: #8f86a3;
@@ -1178,8 +1178,8 @@ table.dataTable.no-footer{border:1px solid #514d95 !important;}
 #form-wrap .row .input-wrap input[type="email"]{
     width: 100%;
     outline: none;
-    border: 0;
-    padding:5px 10px 3px;
+   // border: 1px;
+    padding:8px 8px 8px;
     font-size: 18px !important;
     color: #8f86a3;
     line-height: 22px;
@@ -1308,4 +1308,7 @@ hr{
 #export_a{
     text-decoration: underline;
     font-size: 23px;
+}
+label {
+    font-weight: 500;
 }

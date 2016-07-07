@@ -10,40 +10,26 @@
         <div id="form-wrap">
             <?php $form_data = $this->session->flashdata('form_data'); ?>
             <form id="admin-register" method="post" action="<?= base_url() . "items/export_items/" . $id; ?>">
-                <fieldset>
-                    <div class="row">
-                        <div class="input-wrap">
-                            <input type="number" min="0" name="starting_price" placeholder="Starting Price to be added in each item" data-trigger="change" data-parsley-required />
-                        </div>
-                    </div>
-
-                </fieldset>
-               
-                  <fieldset>
-                    <div class="row">
-                        <div class="input-wrap">
-                            <input type="number" min="0" name="buynow_price" placeholder="Buy Now Price to be added in each item" data-trigger="change" data-parsley-required />
-                        </div>
-                    </div>
-
-                </fieldset>
                 
-                  <fieldset>
+                 <fieldset>
                     <div class="row">
                         <div class="input-wrap">
-                            <input type="number" min="0" name="reserve_price" placeholder="Reserve Price to be added in each item" data-trigger="change" data-parsley-required />
-                        </div>
-                    </div>
-
-                </fieldset>
-                <fieldset>
-                    <div class="row">
-                        <div class="input-wrap">
+                             <label>Quantity</label>
                             <input type="number" min="1" name="quantity" placeholder="Quantity" data-trigger="change" data-parsley-required />
                         </div>
                     </div>
                 </fieldset>
-                <fieldset>
+                  <fieldset>
+                    <div class="row">
+                        <div class="input-wrap">
+                             <label>Starting price</label>
+                            <input type="number" min="0" name="starting_price" placeholder="Starting Price to be added in each item" data-trigger="change" data-parsley-required />
+                        </div>
+                    </div>
+                </fieldset>
+                
+                
+                 <fieldset>
                     <div class="row">
                         <div class="input-wrap">
                             <label>Auction Type</label>
@@ -54,7 +40,48 @@
                             </select>
                         </div>
                     </div>
+                </fieldset> 
+                <fieldset>
+                    <div class="row">
+                        <div class="input-wrap">
+                             <label>Items Less than CAD are Under auction</label>
+                            <input type="number" min="0" name="auction_split" placeholder="Items less than CAD" data-trigger="change" data-parsley-required />
+                        </div>
+                    </div>
                 </fieldset>
+                <fieldset>
+                    <div class="row">
+                        <div class="input-wrap">
+                             <label>Price to be added for items under auction</label>
+                            <input type="number" min="0" name="auction_price" placeholder="Price to be added for auction items" data-trigger="change" data-parsley-required />
+                        </div>
+                    </div>
+                </fieldset>
+                
+                
+              
+               
+                  <fieldset>
+                    <div class="row">
+                        <div class="input-wrap">
+                             <label>Buy Now price</label>
+                            <input type="number" min="0" name="buynow_price" placeholder="Buy Now Price to be added in each item" data-trigger="change" data-parsley-required />
+                        </div>
+                    </div>
+
+                </fieldset>
+                
+                  <fieldset>
+                    <div class="row">
+                        <div class="input-wrap">
+                             <label>Reserved Price</label>
+                            <input type="number" min="0" name="reserve_price" placeholder="Reserve Price to be added in each item" data-trigger="change" data-parsley-required />
+                        </div>
+                    </div>
+
+                </fieldset>
+               
+               
 
                 <fieldset>
 

@@ -73,6 +73,8 @@ class Items extends MY_Controller {
             $reserve_price = $this->input->post('reserve_price');
             $quantity = $this->input->post('quantity');
             $filtered_auctiontype = $this->input->post('auction_type');
+            $auction_split = $this->input->post('auction_split');
+            $auction_price = $this->input->post('auction_price');
             if ($starting_price >= 0) {
                 $name = "$id exported-items"; //This will be the name of the csv file.
                 header('Content-Type: text/csv; charset=utf-8');
@@ -98,19 +100,27 @@ class Items extends MY_Controller {
 
                 foreach ($items as $key => $value) {
                     $price = explode("$", $value['price']);
-                    $startprice = $price[1] + $starting_price;
-                    $buynow_price = $price[1] + $buynow_price;
-                    $reserve_price = $price[1] + $reserve_price;
+                   
+                    $buynowprice = $price[1] + $buynow_price;
+                    $reserveprice = $price[1] + $reserve_price;
+                    
+                    if ($price[1] <= $auction_split) {
+                        $startprice = $price[1] + $auction_price;
+                        $filteredauctiontype = "regular";
+                    } else {
+                        $startprice = $price[1] + $starting_price;
+                        $filteredauctiontype = $filtered_auctiontype;
+                    }
                     $item = array(
                         $value['title'],
                         $value['description'],
                         $startprice,
-                        $buynow_price,
-                        $reserve_price,
+                        $buynowprice,
+                        $reserveprice,
                         $buynow_qty,
                         $buynow_qty_lot,
                         $project_details,
-                        $filtered_auctiontype,
+                        $filteredauctiontype,
                         $value['category'],
                         $value['image_url'],
                         $currency,
