@@ -68,9 +68,11 @@ class Items extends MY_Controller {
 
     public function export_items($id = NULL) {
         if (is_admin()) {
+            // this is for auction  otherwise 0.00
             $starting_price = $this->input->post('starting_price');
+
+            // this is for fix  otherwise 0.00
             $buynow_price = $this->input->post('buynow_price');
-            $reserve_price = $this->input->post('reserve_price');
             $quantity = $this->input->post('quantity');
             $filtered_auctiontype = $this->input->post('auction_type');
             $auction_split = $this->input->post('auction_split');
@@ -100,16 +102,29 @@ class Items extends MY_Controller {
 
                 foreach ($items as $key => $value) {
                     $price = explode("$", $value['price']);
-                   
-                    $buynowprice = $price[1] + $buynow_price;
-                    $reserveprice = $price[1] + $reserve_price;
-                    
-                    if ($price[1] <= $auction_split) {
-                        $startprice = $price[1] + $auction_price;
-                        $filteredauctiontype = "regular";
-                    } else {
+
+                    $buynowprice = "";
+                    $startprice = "";
+                    $reserveprice = 0.00;
+
+
+
+                    if ($filtered_auctiontype == "regular") {
                         $startprice = $price[1] + $starting_price;
-                        $filteredauctiontype = $filtered_auctiontype;
+                        $filteredauctiontype = "regular";
+                    } else if ($filtered_auctiontype == "fixed") {
+                        if ($price[1] <= $auction_split) {
+                            $startprice = $price[1] + $auction_price;
+                            $filteredauctiontype = "regular";
+                        } else {
+                            //$startprice = $price[1] + $buynow_price;
+                            $buynowprice = $price[1] + $buynow_price;
+                            $filteredauctiontype = "fixed";
+                        }
+                    } elseif ($filtered_auctiontype == "classified") {
+                        $startprice = $price[1] + $starting_price;
+                        $buynowprice = $price[1] + $buynow_price;
+                        $filteredauctiontype = "classified";
                     }
                     $item = array(
                         $value['title'],
