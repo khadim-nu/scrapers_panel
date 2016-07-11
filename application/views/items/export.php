@@ -48,7 +48,7 @@
                         <div class="row">
                             <div class="input-wrap">
                                 <label>Starting price</label>
-                                <input type="number" min="0" name="starting_price" id="starting_price" placeholder="Starting Price to be added in each item" data-trigger="change"/>
+                                <input type="number" min="0" name="starting_price" id="starting_price" placeholder="Starting Price" data-trigger="change"/>
                             </div>
                         </div>
                     </fieldset>
@@ -74,8 +74,8 @@
                 <fieldset>
                     <div class="row">
                         <div class="input-wrap">
-                            <label>Starting Price to be added for each item</label>
-                            <input type="number" min="0" name="starting_auction" id="starting_auction" placeholder="Price to be added for auction items" data-trigger="change" data-parsley-required />
+                            <label>Starting Price/label>
+                            <input type="number" min="0" name="starting_auction" id="starting_auction" placeholder="Starting Price" data-trigger="change" data-parsley-required />
                         </div>
                     </div>
                 </fieldset>
@@ -96,11 +96,6 @@
                     </div>
                 </fieldset>
                 </div>
-
-
-
-
-
 
                 <fieldset>
 
