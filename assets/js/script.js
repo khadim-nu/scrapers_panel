@@ -302,15 +302,27 @@ $(document).ready(function () {
     $('#auction_type').on('change', function () {
         if (this.value === "fixed") {
             $("#auction_fields").css("display", "none");
+            $("#auction2_fields").css("display", "block");
             $('form').parsley().destroy();
             $('#starting_price').attr('data-parsley-required', 'false');
             $('#reserve_price').attr('data-parsley-required', 'false');
+            
+            $('#auction_split').attr('data-parsley-required', 'true');
+            $('#starting_auction').attr('data-parsley-required', 'true');
+            $('#buynow_auction').attr('data-parsley-required', 'true');
+            $('#reserve_auction').attr('data-parsley-required', 'true');
             $('form').parsley();
         } else if (this.value === "regular" || this.value === "classified") {
             $("#auction_fields").css("display", "block");
+            $("#auction2_fields").css("display", "none");
              $('form').parsley().destroy();
             $('#starting_price').attr('data-parsley-required', 'true');
             $('#reserve_price').attr('data-parsley-required', 'true');
+            
+            $('#auction_split').attr('data-parsley-required', 'false');
+            $('#starting_auction').attr('data-parsley-required', 'false');
+            $('#buynow_auction').attr('data-parsley-required', 'false');
+            $('#reserve_auction').attr('data-parsley-required', 'false');
             $('form').parsley();
         }
     });

@@ -55,18 +55,19 @@
                     <fieldset>
                         <div class="row">
                             <div class="input-wrap">
-                                <label>Reserve price</label>
-                                <input type="number" min="0" name="reserve_price" id="reserve_price" placeholder="Starting Price to be added in each item" data-trigger="change" />
+                                <label>Reserve Price is %age of buy now price</label>
+                                <input type="number" min="0" max="100" name="reserve_price" id="reserve_price" placeholder="%age of buy now price" data-trigger="change" />
                             </div>
                         </div>
                     </fieldset>
                 </div>
+                <div id="auction2_fields">
                 <hr>
                 <fieldset>
                     <div class="row">
                         <div class="input-wrap">
                             <label>Items Less than CAD are Under auction</label>
-                            <input type="number" min="0" name="auction_split" placeholder="Items less than CAD" data-trigger="change" data-parsley-required />
+                            <input type="number" min="0" name="auction_split" id="auction_split" placeholder="Items less than CAD" data-trigger="change" data-parsley-required />
                         </div>
                     </div>
                 </fieldset>
@@ -74,7 +75,7 @@
                     <div class="row">
                         <div class="input-wrap">
                             <label>Starting Price to be added for each item</label>
-                            <input type="number" min="0" name="starting_auction" placeholder="Price to be added for auction items" data-trigger="change" data-parsley-required />
+                            <input type="number" min="0" name="starting_auction" id="starting_auction" placeholder="Price to be added for auction items" data-trigger="change" data-parsley-required />
                         </div>
                     </div>
                 </fieldset>
@@ -82,18 +83,19 @@
                     <div class="row">
                         <div class="input-wrap">
                             <label>Buy Now Price to be added for each item</label>
-                            <input type="number" min="0" name="buynow_auction" placeholder="Price to be added for auction items" data-trigger="change" data-parsley-required />
+                            <input type="number" min="0" name="buynow_auction" id="buynow_auction" placeholder="Price to be added for auction items" data-trigger="change" data-parsley-required />
                         </div>
                     </div>
                 </fieldset>
                 <fieldset>
                     <div class="row">
                         <div class="input-wrap">
-                            <label>Reserve Price to be added for each item</label>
-                            <input type="number" min="0" name="reserve_auction" placeholder="Price to be added for auction items" data-trigger="change" data-parsley-required />
+                            <label>Reserve Price is %age of buy now price</label>
+                            <input type="number" min="0" max="100" name="reserve_auction" id="reserve_auction" placeholder="%age of buy now price" data-trigger="change" data-parsley-required />
                         </div>
                     </div>
                 </fieldset>
+                </div>
 
 
 

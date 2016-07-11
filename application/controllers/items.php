@@ -85,92 +85,84 @@ class Items extends MY_Controller {
             $buynow_auction = $this->input->post('buynow_auction');
             $reserve_auction = $this->input->post('reserve_auction');
 
-            if ($starting_price >= 0) {
-                $name = "$id exported-items"; //This will be the name of the csv file.
-                header('Content-Type: text/csv; charset=utf-8');
-                header('Content-Disposition: attachment; filename=' . $name . '.csv');
-                $output = fopen('php://output', 'wt');
-                /*
-                 * project_title, description, startprice, buynow_price, reserve_price, buynow_qty, buynow_qty_lot,
-                 * project_details, filtered_auctiontype, cid, sample, currency, city, state, zipcode, country, attributes
-                 */
+            $name = "$id exported-items"; //This will be the name of the csv file.
+            header('Content-Type: text/csv; charset=utf-8');
+            header('Content-Disposition: attachment; filename=' . $name . '.csv');
+            $output = fopen('php://output', 'wt');
+            /*
+             * project_title, description, startprice, buynow_price, reserve_price, buynow_qty, buynow_qty_lot,
+             * project_details, filtered_auctiontype, cid, sample, currency, city, state, zipcode, country, attributes
+             */
 //               fputcsv($output, array('heading1', 'heading2', 'heading... n')); //The column heading row of the csv file
 
-                $items = $this->Items_model->get_all($limit = FALSE, $start = 0, $order_by = "id DESC", "p_id like ", "%$id%");
+            $items = $this->Items_model->get_all($limit = FALSE, $start = 0, $order_by = "id DESC", "p_id like ", "%$id%");
 
-                $buynow_qty = $quantity;
-                $buynow_qty_lot = 1;
-                $project_details = "public";
+            $buynow_qty = $quantity;
+            $buynow_qty_lot = 1;
+            $project_details = "public";
 
-                $currency = "CAD";
-                $city = "Toronto";
-                $state = "Ontario";
-                $zipcode = "M9V5E6";
-                $country = "Canada";
+            $currency = "CAD";
+            $city = "Toronto";
+            $state = "Ontario";
+            $zipcode = "M9V5E6";
+            $country = "Canada";
 
-                foreach ($items as $key => $value) {
-                    $value_price = str_replace(',', '', $value['price']);
-                    $price = explode("$", $value_price);
-                    $item_price = $price[1];
-                    if (isset($price[1])) {
-                        $item_price = floatval($price[1]);
-                    }
-                    $buynowprice = "";
-                    $startprice = "";
-                    $reserveprice = 0.00;
+            foreach ($items as $key => $value) {
+                $value_price = str_replace(',', '', $value['price']);
+                $price = explode("$", $value_price);
+                $item_price = $price[1];
+                if (isset($price[1])) {
+                    $item_price = floatval($price[1]);
+                }
+                $buynowprice = "";
+                $startprice = "";
+                $reserveprice = 0.00;
 
-
+                if ($filtered_auctiontype == "regular") {
+                    $startprice = $starting_price;
+                    $buynowprice = $item_price + $buynow_price; //ok
+                    $reserveprice = ($buynowprice / 100) * $reserve_price;
+                    $filteredauctiontype = "regular";
+                } else if ($filtered_auctiontype == "fixed") {
                     if ($item_price <= $auction_split) {
-                        $startprice = $item_price + $starting_auction;
-                        $buynowprice = $item_price + $buynow_auction;
-                        $reserveprice = $item_price + $reserve_auction;
+                        $startprice = $starting_auction;
+                        $buynowprice = $item_price + $buynow_auction; //ok
+                        $reserveprice = ($buynowprice / 100) * $reserve_auction;
                         $filteredauctiontype = "regular";
                     } else {
-
-                        if ($filtered_auctiontype == "regular") {
-                            $startprice = $item_price + $starting_price;
-                            $buynowprice = $item_price + $buynow_price;
-                            $reserveprice = $item_price + $reserve_price;
-                            $filteredauctiontype = "regular";
-                        } else if ($filtered_auctiontype == "fixed") {
-                            $buynowprice = $item_price + $buynow_price;
-                            $filteredauctiontype = "fixed";
-                        } elseif ($filtered_auctiontype == "classified") {
-                            $startprice = $item_price + $starting_price;
-                            $buynowprice = $item_price + $buynow_price;
-                            $reserveprice = $item_price + $reserve_price;
-                            $filteredauctiontype = "classified";
-                        }
+                        $buynowprice = $item_price + $buynow_price;
+                        $filteredauctiontype = "fixed";
                     }
-                    $item = array(
-                        $value['title'],
-                        $value['description'],
-                        $startprice,
-                        $buynowprice,
-                        $reserveprice,
-                        $buynow_qty,
-                        $buynow_qty_lot,
-                        $project_details,
-                        $filteredauctiontype,
-                        $value['category'],
-                        $value['image_url'],
-                        $currency,
-                        $city,
-                        $state,
-                        $zipcode,
-                        $country
-                    );
-                    fputcsv($output, $item);
+                } elseif ($filtered_auctiontype == "classified") {
+                    $startprice = $starting_price;
+                    $buynowprice = $item_price + $buynow_price;
+                    $reserveprice = ($buynowprice / 100) * $reserve_price;
+                    $filteredauctiontype = "classified";
                 }
-
-                fclose($output);
-                $this->session->set_flashdata('message', "Registered Successfully");
-                redirect('items');
-            } else {
-                $this->session->set_flashdata('message', ERROR_MESSAGE . ": Price less than zero.");
-
-                redirect('items/export_to_CSV');
+                $item = array(
+                    $value['title'],
+                    $value['description'],
+                    $startprice,
+                    $buynowprice,
+                    $reserveprice,
+                    $buynow_qty,
+                    $buynow_qty_lot,
+                    $project_details,
+                    $filteredauctiontype,
+                    $value['category'],
+                    $value['image_url'],
+                    $currency,
+                    $city,
+                    $state,
+                    $zipcode,
+                    $country
+                );
+                fputcsv($output, $item);
             }
+
+            fclose($output);
+            $this->session->set_flashdata('message', "Registered Successfully");
+            redirect('items');
         } else {
             redirect('welcome');
         }
