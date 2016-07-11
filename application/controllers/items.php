@@ -101,8 +101,12 @@ class Items extends MY_Controller {
                 $country = "Canada";
 
                 foreach ($items as $key => $value) {
-                    $price = explode("$", $value['price']);
-
+                    $value_price=str_replace(',', '', $value['price']);
+                    $price = explode("$",$value_price);
+                    $item_price = $price[1];
+                    if (isset($price[1])) {
+                        $item_price=floatval($price[1]);
+                    }
                     $buynowprice = "";
                     $startprice = "";
                     $reserveprice = 0.00;
@@ -110,20 +114,20 @@ class Items extends MY_Controller {
 
 
                     if ($filtered_auctiontype == "regular") {
-                        $startprice = $price[1] + $starting_price;
+                        $startprice = $item_price + $starting_price;
                         $filteredauctiontype = "regular";
                     } else if ($filtered_auctiontype == "fixed") {
-                        if ($price[1] <= $auction_split) {
-                            $startprice = $price[1] + $auction_price;
+                        if ($item_price <= $auction_split) {
+                            $startprice = $item_price + $auction_price;
                             $filteredauctiontype = "regular";
                         } else {
-                            //$startprice = $price[1] + $buynow_price;
-                            $buynowprice = $price[1] + $buynow_price;
+                            //$startprice = $item_price + $buynow_price;
+                            $buynowprice = $item_price + $buynow_price;
                             $filteredauctiontype = "fixed";
                         }
                     } elseif ($filtered_auctiontype == "classified") {
-                        $startprice = $price[1] + $starting_price;
-                        $buynowprice = $price[1] + $buynow_price;
+                        $startprice = $item_price + $starting_price;
+                        $buynowprice = $item_price + $buynow_price;
                         $filteredauctiontype = "classified";
                     }
                     $item = array(
