@@ -91,7 +91,7 @@ class Items extends MY_Controller {
                 $items = $this->Items_model->get_all($limit = FALSE, $start = 0, $order_by = "id DESC", "p_id like ", "%$id%");
 
                 $buynow_qty = $quantity;
-                $buynow_qty_lot = $quantity;
+                $buynow_qty_lot = 1;
                 $project_details = "public";
 
                 $currency = "CAD";

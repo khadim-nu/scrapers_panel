@@ -272,7 +272,6 @@ $(document).ready(function () {
 ////////////////////////
 
     // Jquery UI modal Window
-    $('.modal-game-portal').dialog();
 
 
     $("input[type='number']").keypress(function (e) {
@@ -298,6 +297,12 @@ $(document).ready(function () {
         $('.dp-img').attr("src", URL.createObjectURL(this.files[0]));
     });
     //////////////////
+
+
+    $('#auction_type').on('change', function () {
+        //alert(this.value); // or $(this).val()
+        alert("hi");
+    });
 
 
 });

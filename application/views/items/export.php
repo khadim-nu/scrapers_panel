@@ -36,7 +36,7 @@
                     <div class="row">
                         <div class="input-wrap">
                             <label>Auction Type</label>
-                            <select name="auction_type" class="form-control" id="sel1">
+                            <select name="auction_type" class="form-control" id="auction_type">
                                 <option value="fixed">Fix</option>
                                 <option value="regular">Regular</option>
                                 <option value="classified">Classified</option>
