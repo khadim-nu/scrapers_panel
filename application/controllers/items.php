@@ -95,8 +95,8 @@ class Items extends MY_Controller {
              */
 //               fputcsv($output, array('heading1', 'heading2', 'heading... n')); //The column heading row of the csv file
 
-            $items = $this->Items_model->get_all($limit = FALSE, $start = 0, $order_by = "id DESC", "p_id like ", "%$id%");
-
+            $items = $this->Items_model->get_all($limit = FALSE, $start = 0, $order_by = "id DESC", "p_id like ", "%$id%", $where_second_column_name = "category !=", $where_second_column_value = "");
+        
             $buynow_qty = $quantity;
             $buynow_qty_lot = 1;
             $project_details = "public";
@@ -163,6 +163,33 @@ class Items extends MY_Controller {
             fclose($output);
             $this->session->set_flashdata('message', "Registered Successfully");
             redirect('items');
+        } else {
+            redirect('welcome');
+        }
+    }
+     public function assign_categories() {
+        if (is_admin()) {
+            $where=array("category_title !="=>"");
+            $data['data'] = $this->Items_model->findByCondition($where, $order_by = "category_title ASC", $group_by = "category_title", $select = '*', $like = null);
+            $data['title'] = 'Assign Category IDs';
+            $this->load->view('items/assign_categories', $data);
+        } else {
+            redirect('welcome');
+        }
+    }
+     public function assign_cats() {
+        if (is_admin()) {
+            $item_cats=  $_POST;
+            for ($i=1; $i<(count($item_cats)/2 +1);$i++) {
+                $title=$this->input->post('title_'.$i);
+                $id=$this->input->post('id_'.$i);
+               
+                $where=array("category_title"=>$title);
+                $data=array("category"=>$id);
+                $this->Items_model->updateByCondition($where, $data);
+            }
+             $this->session->set_flashdata('message', "Saved Successfully");
+             redirect('items/assign_categories');
         } else {
             redirect('welcome');
         }

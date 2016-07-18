@@ -4,7 +4,7 @@ class MY_Model extends CI_Model {
 
     public $table_name = '';
     public $primary_key = 'id';
-     public $today_datetime = "";
+    public $today_datetime = "";
     public $current_time_stamp = "";
 
     public function __construct() {
@@ -18,7 +18,7 @@ class MY_Model extends CI_Model {
             $this->today_datetime = $dt->format('Y-m-d H:i:s');
         }
         $this->current_time_stamp = $dt->format('YmdHis');
-        
+
         $this->load->helper(array('form', 'url', 'date', 'array', 'text'));
         $this->load->library('upload');
     }
@@ -47,18 +47,18 @@ class MY_Model extends CI_Model {
         return $query->get($this->table_name)->result_array();
     }
 
-    public function get_all_custom_where($where=false, $select = FALSE,$table=FALSE) {
+    public function get_all_custom_where($where = false, $select = FALSE, $table = FALSE) {
         $query = $this->db;
         if ($select) {
             $query = $query->select($select);
         }
-        if($where)
+        if ($where)
             $query = $query->where($where);
-        $query=$query->order_by("id","desc");
-        if(!$table)
-        return $query->get($this->table_name)->result_array();
-    else 
-         return $query->get($table)->result_array();
+        $query = $query->order_by("id", "desc");
+        if (!$table)
+            return $query->get($this->table_name)->result_array();
+        else
+            return $query->get($table)->result_array();
     }
 
     public function extract_from_array($array, $column) {
@@ -228,8 +228,9 @@ class MY_Model extends CI_Model {
 
     public function findByCondition($where, $order_by = false, $group_by = false, $select = '*', $like = null) {
         $this->db->select($select)
-                ->from($this->table_name)
-                ->where($where);
+                ->from($this->table_name);
+        if ($where)
+            $this->db->where($where);
         if ($like) {
             $this->db->like($like['column'], $like['value'], 'both');
         }

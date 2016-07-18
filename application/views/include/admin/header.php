@@ -24,6 +24,9 @@
                 <a class="" href="<?= base_url(); ?>items">Show Scraped Items</a>
             </div>
             <div class="links">
+                <a class="" href="<?= base_url(); ?>items/assign_categories">Assign Categories</a>
+            </div>
+            <div class="links">
                 <a class="" href="<?= base_url(); ?>items/export_to_CSV">Export All to CSV</a>
             </div>
         </div>
