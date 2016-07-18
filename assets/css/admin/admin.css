@@ -862,8 +862,8 @@ table.dataTable thead th, table.dataTable thead td{padding: 6px 4px !important;}
     background:url(../../images/admin/divider-2.png) repeat-y 100% 0 !important;
 }
 .table-striped > tbody > tr:nth-child(2n+1){
-    background-color:#ecf2f5;
-    color: #7f7775;
+        background-color: #ECF2B6;
+     color: black;
 }
 table.dataTable tbody tr{
     color: #362e7e;
@@ -894,7 +894,7 @@ table.dataTable tbody tr a{ color: #362e7e;}
 }
 table.dataTable.no-footer{border:1px solid #514d95 !important;}
 .holder.even table.dataTable.no-footer{border:1px solid #645a58 !important; }
-/*table end*/
+/*table end
 
 
 /*DASHBOARD STYLE*/
