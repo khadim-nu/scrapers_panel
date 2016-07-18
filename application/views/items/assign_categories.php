@@ -22,7 +22,7 @@
                                     <tr>
                                         <th class="sorting">Category Title</th>
                                         <th class="hidden-480">Category ID</th>
-                                        <th class="hidden-480">Change To</th>
+                                        <th class="hidden-480">Map Category ID To</th>
                                     </tr>
                                 </thead>
                                 <tbody>

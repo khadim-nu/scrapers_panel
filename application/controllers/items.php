@@ -161,7 +161,7 @@ class Items extends MY_Controller {
             }
 
             fclose($output);
-            $this->session->set_flashdata('message', "Registered Successfully");
+            $this->session->set_flashdata('message', ERROR_MESSAGE.": No items availabe");
             redirect('items');
         } else {
             redirect('welcome');
