@@ -33,10 +33,10 @@
                                             ?>
                                             <tr>
                                                 <td class="hidden-480"><?= $row['category_title']; ?></td>
-                                                <td class="hidden-phone"><?= ($row['category']); ?></td>
+                                                <td class="hidden-phone"><?= ($row['cat_id']>0)?$row['cat_id']:$row['category']; ?></td>
                                                 <td class="hidden-phone">
                                                     <input name="title_<?= $i; ?>" type="hidden" value="<?= $row['category_title']; ?>" />
-                                                    <input name="id_<?= $i; ?>" type="number" min="0" value="<?= ($row['category']); ?>" />
+                                                    <input name="id_<?= $i; ?>" type="number" min="0" value="<?= ($row['cat_id']>0)?$row['cat_id']:$row['category']; ?>" />
                                                 </td>
                                             </tr>
                                             <?php
