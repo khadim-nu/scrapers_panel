@@ -172,14 +172,13 @@ class Items extends MY_Controller {
         if (is_admin()) {
             $where = array("t1.category_title !=" => "");
             /////////
-            $ambiguous_alias_select = "t2.cat_id, t2.title as cat_title,t1.*";
+            $ambiguous_alias_select = "t2.cat_id, t2.title as cat_title,count(t1.id) as total,t1.*";
             $from_tbl_1 = "items t1";
             $join_array = array(
-                array('table' => 'categories t2', 'condition' => 't1.category = t2.cat_id', 'direction' => 'left'),
+                array('table' => 'categories t2', 'condition' => 't1.category_title = t2.title', 'direction' => 'left'),
             );
             // $where = array("t1.p_id like " => "%" . $id . "%");
-            $data['data'] = $this->Items_model->fetch_join_multiple_limit(NULL, NULL, $ambiguous_alias_select, $from_tbl_1, $join_array, $where, $group_by = "t1.category_title", $order_by = "t1.category_title ASC");
-
+            $data['data'] = $this->Items_model->fetch_join_multiple_limit(NULL, NULL, $ambiguous_alias_select, $from_tbl_1, $join_array, $where, $group_by = "t1.category_title", $order_by = "t1.p_id ASC");
             /////////////
 //            $data['data'] = $this->Items_model->findByCondition($where, $order_by = "category_title ASC", $group_by = "category_title", $select = '*', $like = null);
 //            var_dump($data['data']);die;

@@ -20,6 +20,8 @@
                             <table id="sample-table-2" class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
+                                        <th class="sorting">WebSite</th>
+                                        <th class="sorting">Items in this category</th>
                                         <th class="sorting">Category Title</th>
                                         <th class="hidden-480">Category ID</th>
                                         <th class="hidden-480">Map Category ID To</th>
@@ -32,6 +34,8 @@
                                         foreach ($data as $row) {
                                             ?>
                                             <tr>
+                                                <td class="hidden-480"><?= explode("_", $row['p_id'])[0]; ?></td>
+                                                <td class="hidden-480"><?= $row['total']; ?></td>
                                                 <td class="hidden-480"><?= $row['category_title']; ?></td>
                                                 <td class="hidden-phone"><?= ($row['cat_id']>0)?$row['cat_id']:$row['category']; ?></td>
                                                 <td class="hidden-phone">
