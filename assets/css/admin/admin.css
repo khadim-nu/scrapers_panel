@@ -1210,7 +1210,7 @@ table.dataTable.no-footer{border:1px solid #514d95 !important;}
     -o-transition: all .2s ease;
     transition: all .2s ease;
 }
-.btn_wrap_a{
+.btn_wrap_a,.btn_wrap_show{
     background: cadetblue;
     border: none;
     color: #fff;
@@ -1223,6 +1223,9 @@ table.dataTable.no-footer{border:1px solid #514d95 !important;}
     vertical-align: middle;
     margin: 10px 0px 10px 40px;
     width: 70%;
+}
+.btn_wrap_show{
+    background: #63b14b;
 }
 #form-wrap .row textarea{
     border: 1px solid #dbd7e3;

@@ -18,7 +18,7 @@ class Admin extends MY_Controller {
         if (is_admin()) {
             $data['user_role'] = 'admin';
             $data['title'] = 'Dashboard';
-            $this->load->view('admin/dashboard', $data);
+            $this->load->view('items/index', $data);
         } else {
             redirect('admin/login');
         }
