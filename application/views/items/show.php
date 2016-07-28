@@ -23,7 +23,7 @@
                                 <p>
                                     <?php
                                     $imgArr = explode(',', $row['image_url']);
-                                    $img    = (isset($imgArr[1])) ? $imgArr[1] : "";
+                                    $img    = (isset($imgArr[1])) ? $imgArr[1] : $row['image_url'];
                                     ?>
                                     <img src="<?= $img; ?>" height="200px" width="300px" />
                                 </p>
