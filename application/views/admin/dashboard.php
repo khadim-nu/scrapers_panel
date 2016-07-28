@@ -28,11 +28,12 @@
 <!--                            <div class="">
                                 <a href="#" class="btn_wrap_a" >Scrape from www.factorydirect.ca</a>
                             </div>-->
-<!--                            <div class="">
-                                <a href="#" class="btn_wrap_a" >Scrape from www.walmart.ca</a>
-                            </div>-->
+
                             <div class="">
                                 <a href="<?= base_url(); ?>items/marks_scraper" class="btn_wrap_a" >Scrape from www.marks.com</a>
+                            </div>
+                            <div class="">
+                                <a href="<?= base_url(); ?>items/gencomarketplace_scraper" class="btn_wrap_a" >Scrape from www.gencomarketplace.com</a>
                             </div>
                         </div>
                     </div>

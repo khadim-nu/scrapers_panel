@@ -22,6 +22,11 @@ class Items extends MY_Controller {
         $output = shell_exec($command);
         redirect('items');
     }
+    public function gencomarketplace_scraper() {
+        $command = 'java -jar /var/www/yazzoopa-scraper/scrapping_tools/gencomarketplace_scraper.jar';
+        $output = shell_exec($command);
+        redirect('items');
+    }
 
     public function marks_scraper() {
 

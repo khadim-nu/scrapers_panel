@@ -12,23 +12,25 @@
                     <div class="post_wrap">
                         <div class="row">
                             <div class="">
-                                <a href="<?=  base_url();?>items/show/thesource" class="btn_wrap_show" >Show items scraped from www.thesource.ca</a>
+                                <a href="<?= base_url(); ?>items/show/thesource" class="btn_wrap_show" >Show items scraped from www.thesource.ca</a>
                             </div>
                             <div class="">
-                                <a href="<?=  base_url();?>items/show/gianttiger" class="btn_wrap_show" >Show items scraped from www.gianttiger.com</a>
+                                <a href="<?= base_url(); ?>items/show/gianttiger" class="btn_wrap_show" >Show items scraped from www.gianttiger.com</a>
                             </div>
-<!--                            <div class="">
-                                <a href="<?=  base_url();?>items/show/factorydirect" class="btn_wrap_show" >Show items scraped from www.factorydirect.ca</a>
-                            </div>-->
-<!--                            <div class="">
-                                <a href="<?=  base_url();?>items/show/walmart" class="btn_wrap_show" >Show items scraped from www.walmart.ca</a>
-                            </div>-->
+                            <!--                            <div class="">
+                                                            <a href="<?= base_url(); ?>items/show/factorydirect" class="btn_wrap_show" >Show items scraped from www.factorydirect.ca</a>
+                                                        </div>-->
+
                             <div class="">
-                                <a href="<?=  base_url();?>items/show/marks" class="btn_wrap_show" >Show items scraped from www.marks.com</a>
+                                <a href="<?= base_url(); ?>items/show/marks" class="btn_wrap_show" >Show items scraped from www.marks.com</a>
                             </div>
                             <div class="">
-                                <a href="<?=  base_url();?>items/show" class="btn_wrap_show" >Show All Items</a>
+                                <a href="<?= base_url(); ?>items/show/gencomarketplace" class="btn_wrap_show" >Show items scraped from gencomarketplace</a>
                             </div>
+                            <div class="">
+                                <a href="<?= base_url(); ?>items/show" class="btn_wrap_show" >Show All Items</a>
+                            </div>
+
                         </div>
                     </div>
                 </fieldset>
