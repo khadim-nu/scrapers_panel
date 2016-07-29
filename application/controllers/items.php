@@ -258,7 +258,7 @@ class Items extends MY_Controller {
                     $filteredauctiontype = "classified";
                 }
                 $imgArr = explode(',', $value['image_url']);
-                $img = (isset($imgArr[1])) ? $imgArr[1] : "";
+                $img = (isset($imgArr[1])) ? $imgArr[1] : $value['image_url'];
                 $item = array(
                     $value['title'],
                     $value['description'],
