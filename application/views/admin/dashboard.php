@@ -20,22 +20,9 @@
                     <div class="post_wrap">
                         <div class="row">
                             <div class="">
-                                <a href="<?= base_url(); ?>items/thesource_scraper" class="btn_wrap_a" >Scrape from www.thesource.ca</a>
+                                <a href="<?= base_url(); ?>items/wayfair" class="btn_wrap_a" >Scrape Items From www.wayfair.com</a>
                             </div>
-                            <div class="">
-                                <a href="<?= base_url(); ?>items/gianttiger_scraper" class="btn_wrap_a" >Scrape from www.gianttiger.com</a>
-                            </div>
-<!--                            <div class="">
-                                <a href="#" class="btn_wrap_a" >Scrape from www.factorydirect.ca</a>
-                            </div>-->
-
-                            <div class="">
-                                <a href="<?= base_url(); ?>items/marks_scraper" class="btn_wrap_a" >Scrape from www.marks.com</a>
-                            </div>
-                            <div class="">
-                                <a href="<?= base_url(); ?>items/gencomarketplace_scraper" class="btn_wrap_a" >Scrape from www.gencomarketplace.com</a>
-                            </div>
-                        </div>
+                        </div>  
                     </div>
                 </fieldset>
             </form>

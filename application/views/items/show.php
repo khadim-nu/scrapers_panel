@@ -16,10 +16,13 @@
                         <?php
                         if ($data) {
                             foreach ($data as $row) {
+                                $upc=  explode("_", $row['p_id']);
                                 ?>
-                                <p><strong>product title:</strong> <?= $row['title']; ?></p>
-                                <p><strong>product id:</strong> <?= $row['p_id']; ?></p>
-                                <p><strong>category:</strong> <?= $row['category_title']; ?></p>
+                        <p><strong>URL:</strong> <a href="<?= $row['link']; ?>"><?= $row['link']; ?></a></p>
+                                
+                                <p><strong>TITLE:</strong> <?= $row['title']; ?></p>
+                                <p><strong>UPC:</strong> <?= $upc[1]; ?></p>
+                                <p><strong>PRICE: </strong><?= $row['price']; ?></p>
                                 <p>
                                     <?php
                                     $imgArr = explode(',', $row['image_url']);
@@ -27,10 +30,9 @@
                                     ?>
                                     <img src="<?= $img; ?>" height="200px" width="300px" />
                                 </p>
-                                <p><strong>product link:</strong> <a href="<?= $row['link']; ?>"><?= $row['link']; ?></a></p>
-                                <p><strong>product price: </strong><?= $row['price']; ?></p>
-                                <p><strong>Description:</strong></p>
-                                <p><?= $row['description'] ?></p>
+                                
+                                <p><strong>Features:</strong></p>
+                                <p><?= $row['specification'] ?></p>
         <!--                                <p><strong>Specification:</strong></p>
                                         <p><?= $row['specification'] ?></p>-->
                                 <br><hr>
