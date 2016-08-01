@@ -16,10 +16,10 @@
                         <?php
                         if ($data) {
                             foreach ($data as $row) {
-                                $upc=  explode("_", $row['p_id']);
+                                $upc    = explode("_", $row['p_id']);
                                 ?>
-                        <p><strong>URL:</strong> <a href="<?= $row['link']; ?>"><?= $row['link']; ?></a></p>
-                                
+                                <p><strong>URL:</strong> <a href="<?= $row['link']; ?>" target="_blank"><?= $row['link']; ?> </a></p>
+
                                 <p><strong>TITLE:</strong> <?= $row['title']; ?></p>
                                 <p><strong>UPC:</strong> <?= $upc[1]; ?></p>
                                 <p><strong>PRICE: </strong><?= $row['price']; ?></p>
@@ -30,7 +30,7 @@
                                     ?>
                                     <img src="<?= $img; ?>" height="200px" width="300px" />
                                 </p>
-                                
+
                                 <p><strong>Features:</strong></p>
                                 <p><?= $row['specification'] ?></p>
         <!--                                <p><strong>Specification:</strong></p>

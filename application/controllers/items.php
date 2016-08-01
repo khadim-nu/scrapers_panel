@@ -12,7 +12,7 @@ class Items extends MY_Controller {
     }
 
     public function wayfair() {
-        $command = 'java -jar /var/www/yazzoopa-scraper/scrapping_tools/wayfair.jar';
+        $command = 'java -jar /var/www/scrapers_panel/scrapping_tools/wayfair.jar';
         $output  = shell_exec($command);
         redirect('items');
     }
@@ -67,7 +67,7 @@ class Items extends MY_Controller {
                         $upc[1],
                         "$" . trim($price[1]),
                         $value['link'],
-                        $img
+                            // $img
                     );
                     fputcsv($output, $item);
                 }
