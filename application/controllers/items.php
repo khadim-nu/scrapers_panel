@@ -12,8 +12,13 @@ class Items extends MY_Controller {
     }
 
     public function wayfair() {
-        $command = 'java -jar /var/www/scrapers_panel/scrapping_tools/wayfair.jar';
-        $output  = shell_exec($command);
+        $dir     = __DIR__;
+        $dir     = explode("application", $dir);
+        $dir     = $dir[0];
+        $command = "java -jar " . $dir . "scrapping_tools/";
+        $command .= 'wayfair.jar';
+
+        $output = shell_exec($command);
         redirect('items');
     }
 
