@@ -70,6 +70,7 @@ class Items extends MY_Controller {
                     $item   = array(
                         $value['title'],
                         $upc[1],
+                        $value['upc'],
                         "$" . trim($price[1]),
                         $value['link'],
                             // $img

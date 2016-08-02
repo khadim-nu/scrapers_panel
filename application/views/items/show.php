@@ -21,7 +21,8 @@
                                 <p><strong>URL:</strong> <a href="<?= $row['link']; ?>" target="_blank"><?= $row['link']; ?> </a></p>
 
                                 <p><strong>TITLE:</strong> <?= $row['title']; ?></p>
-                                <p><strong>UPC:</strong> <?= $upc[1]; ?></p>
+                                <p><strong>PRODUCT_ID:</strong> <?= $upc[1]; ?></p>
+                                <p><strong>UPC CODE:</strong> <?= $row['upc']; ?></p>
                                 <p><strong>PRICE: </strong><?= $row['price']; ?></p>
                                 <p>
                                     <?php
