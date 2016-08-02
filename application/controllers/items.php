@@ -69,7 +69,7 @@ class Items extends MY_Controller {
                     $price  = explode("$", $value['price']);
                     $item   = array(
                         $value['title'],
-                        $upc[1],
+//                        $upc[1],
                         $value['upc'],
                         "$" . trim($price[1]),
                         $value['link'],
