@@ -24,6 +24,7 @@
                                 <p><strong>PRODUCT_ID:</strong> <?= $upc[1]; ?></p>
                                 <p><strong>UPC CODE:</strong> <?= $row['upc']; ?></p>
                                 <p><strong>PRICE: </strong><?= $row['price']; ?></p>
+                                <p><strong>CATEGORY: </strong><?= $row['category_title']; ?></p>
                                 <p>
                                     <?php
                                     $imgArr = explode(',', $row['image_url']);
