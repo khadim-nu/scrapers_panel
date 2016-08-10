@@ -82,7 +82,7 @@ class Items extends MY_Controller {
                         $value['title'],
 //                        $upc[1],
                         $value['upc'],
-                        (isset($price[1])) ? "$" . trim($price[1].trim('-')) : $value['price'],
+                        (isset($price[1])) ? "$" . trim(str_replace('-','',$price[1])) : $value['price'],
                         $value['link'],
                             // $img
                     );
