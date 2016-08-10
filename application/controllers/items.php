@@ -22,10 +22,21 @@ class Items extends MY_Controller {
         redirect('items');
     }
 
+    public function buybuybaby() {
+        $dir     = __DIR__;
+        $dir     = explode("application", $dir);
+        $dir     = $dir[0];
+        $command = "java -jar " . $dir . "scrapping_tools/";
+        $command .= 'buybuybaby.jar';
+
+        $output = shell_exec($command);
+        redirect('items');
+    }
+
     public function show($id = NULL) {
         if (is_admin()) {
             $where         = array("p_id like " => "%" . $id . "%", "title !=" => "");
-            $data['data']  = $this->Items_model->get_all_custom_where($where         = false, $select        = FALSE);
+            $data['data']  = $this->Items_model->get_all_custom_where($where, $select        = FALSE);
             $data['total'] = 0;
             if ($data['data'] && !empty($data['data'])) {
                 $data['total'] = count($data['data']);
@@ -60,7 +71,7 @@ class Items extends MY_Controller {
 
             $items    = $this->Items_model->get_all($limit    = FALSE, $start    = 0, $order_by = "id DESC", "p_id like ", "%$id%");
 
-
+            $items_percsv = 20;
             foreach ($items as $key => $value) {
                 if (!empty($value['title'])) {
                     $imgArr = explode(',', $value['image_url']);
@@ -71,7 +82,7 @@ class Items extends MY_Controller {
                         $value['title'],
 //                        $upc[1],
                         $value['upc'],
-                        "$" . trim($price[1]),
+                        (isset($price[1])) ? "$" . trim($price[1]) : $value['price'],
                         $value['link'],
                             // $img
                     );

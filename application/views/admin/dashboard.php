@@ -22,6 +22,9 @@
                             <div class="">
                                 <a href="<?= base_url(); ?>items/wayfair" class="btn_wrap_a" >Scrape Items From www.wayfair.com</a>
                             </div>
+                            <div class="">
+                                <a href="<?= base_url(); ?>items/buybuybaby" class="btn_wrap_a" >Scrape Items From www.buybuybaby.com</a>
+                            </div>
                         </div>  
                     </div>
                 </fieldset>
