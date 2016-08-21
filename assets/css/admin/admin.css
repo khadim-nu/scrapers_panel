@@ -36,10 +36,13 @@ body.admin-page{
 }
 #header .logo a{
     display: block;
-    background: url(../../images/logo1.png)  no-repeat;
+    background: url(../../images/lo1.png)  no-repeat;
     min-width: 179px;
-        background-size: 250px;
+    background-size: 250px;
     min-height: 70px;
+    color: black;
+    text-indent: 0;
+    font-size: 30px;
 }
 
 #header .search-wrap{
