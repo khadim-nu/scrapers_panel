@@ -3,8 +3,8 @@
 <div id="login-wrap">
     <div class="main-holder">
         <div class="heading-area">
-            <img width="15%;" src="<?= base_url(); ?>assets/images/logo1.png" />
-            <STRONG class="heading">Admin Login</STRONG>
+            <img width="15%;" src="<?= base_url(); ?>assets/images/lo1.png" alt="James Clar Company logo" />
+            <STRONG class="heading">James Scrapers - Login</STRONG>
         </div>
         <div class="holder">
             <div class="wrapper">
