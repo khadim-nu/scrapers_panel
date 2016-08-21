@@ -12,14 +12,7 @@
                     <div class="post_wrap">
                         <div class="row">
                             <div class="">
-                                <a href="<?= base_url(); ?>items/show/wayfair" class="btn_wrap_show" >Show Scraped Items Of wayfair.com</a>
-                            </div>
-                            <div class="">
-                                <a href="<?= base_url(); ?>items/show/buybuybaby" class="btn_wrap_show" >Show Scraped Items Of buybuybaby.com</a>
-                            </div>
-                            
-                            <div class="">
-                                <a href="<?= base_url(); ?>items/show" class="btn_wrap_show" >Show All Items</a>
+                                <a href="<?= base_url(); ?>items/show/adidas" class="btn_wrap_show" >Show Scraped Items Of wayfair.com</a>
                             </div>
 
                         </div>

@@ -16,15 +16,12 @@
                         <?php
                         if ($data) {
                             foreach ($data as $row) {
-                                $upc    = explode("_", $row['p_id']);
                                 ?>
                                 <p><strong>URL:</strong> <a href="<?= $row['link']; ?>" target="_blank"><?= $row['link']; ?> </a></p>
-
                                 <p><strong>TITLE:</strong> <?= $row['title']; ?></p>
-                                <p><strong>PRODUCT_ID:</strong> <?= $upc[1]; ?></p>
-                                <p><strong>UPC CODE:</strong> <?= $row['upc']; ?></p>
+                                <p><strong>PRODUCT_ID:</strong> <?=explode('_', $row['p_id'])[1]; ?></p>
                                 <p><strong>PRICE: </strong><?= $row['price']; ?></p>
-                                <p><strong>CATEGORY: </strong><?= $row['category_title']; ?></p>
+                                <p><strong>Release Date: </strong><?= $row['release_date'] ?></p>
                                 <p>
                                     <?php
                                     $imgArr = explode(',', $row['image_url']);
@@ -32,11 +29,6 @@
                                     ?>
                                     <img src="<?= $img; ?>" height="200px" width="300px" />
                                 </p>
-
-                                <p><strong>Features:</strong></p>
-                                <p><?= $row['specification'] ?></p>
-        <!--                                <p><strong>Specification:</strong></p>
-                                        <p><?= $row['specification'] ?></p>-->
                                 <br><hr>
                                 <br>
                                 <?php

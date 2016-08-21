@@ -20,10 +20,7 @@
                     <div class="post_wrap">
                         <div class="row">
                             <div class="">
-                                <a href="<?= base_url(); ?>items/wayfair" class="btn_wrap_a" >Scrape Items From www.wayfair.com</a>
-                            </div>
-                            <div class="">
-                                <a href="<?= base_url(); ?>items/buybuybaby" class="btn_wrap_a" >Scrape Items From www.buybuybaby.com</a>
+                                <a href="<?= base_url(); ?>items/adidas" class="btn_wrap_a" >Scrape Items From www.wayfair.com</a>
                             </div>
                         </div>  
                     </div>

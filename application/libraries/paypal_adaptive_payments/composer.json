@@ -1,6 +1,0 @@
-{
-    "name": "me/shopping-cart-app",
-    "require": {
-        "paypal/adaptivepayments-sdk-php":"2.*"
-    }
-}

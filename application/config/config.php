@@ -225,7 +225,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'gamezoneincubasys';
+$config['encryption_key'] = 'scrapers';
 
 /*
 |--------------------------------------------------------------------------
@@ -367,10 +367,6 @@ $config['proxy_ips'] = '';
 | available, used both for testing purposes and back end query minimisation
 |
 */
-$config['ADMIN_EMAILS'] = 'kyas@incubasxfys.com';
-$config['GAME_TYPES']=array('Sport','Action','Puzzle','Educational','Entertainment','Skills','Music','Adventure','Quiz');
-
-
 
 
 

@@ -11,23 +11,12 @@ class Items extends MY_Controller {
         $this->load->model('Categories_model');
     }
 
-    public function wayfair() {
+    public function adidas() {
         $dir     = __DIR__;
         $dir     = explode("application", $dir);
         $dir     = $dir[0];
         $command = "java -jar " . $dir . "scrapping_tools/";
-        $command .= 'wayfair.jar';
-
-        $output = shell_exec($command);
-        redirect('items');
-    }
-
-    public function buybuybaby() {
-        $dir     = __DIR__;
-        $dir     = explode("application", $dir);
-        $dir     = $dir[0];
-        $command = "java -jar " . $dir . "scrapping_tools/";
-        $command .= 'buybuybaby.jar';
+        $command .= 'adidas.jar';
 
         $output = shell_exec($command);
         redirect('items');
@@ -74,17 +63,14 @@ class Items extends MY_Controller {
             $items_percsv = 20;
             foreach ($items as $key => $value) {
                 if (!empty($value['title'])) {
-                    $imgArr = explode(',', $value['image_url']);
-                    $img    = (isset($imgArr[1])) ? $imgArr[1] : $value['image_url'];
-                    $upc    = explode("_", $value['p_id']);
-                    $price  = explode("$", $value['price']);
+                    $img    = $value['image_url'];
+                    $p_id    = explode("_", $value['p_id']);
                     $item   = array(
                         $value['title'],
-//                        $upc[1],
-                        $value['upc'],
-                        (isset($price[1])) ? "$" . trim(str_replace('-','',$price[1])) : $value['price'],
+                        $p_id[1],
+                        $value['price'],
                         $value['link'],
-                            // $img
+                        $img
                     );
                     fputcsv($output, $item);
                 }
