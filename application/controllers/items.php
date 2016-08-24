@@ -16,7 +16,7 @@ class Items extends MY_Controller {
         $dir     = explode("application", $dir);
         $dir     = $dir[0];
         $command = "java -jar " . $dir . "scrapping_tools/";
-        $command .= 'adidas.jar';
+        $command .= 'scrapers.jar';
 
         $output = shell_exec($command);
         redirect('items');
@@ -70,7 +70,8 @@ class Items extends MY_Controller {
                         $p_id[1],
                         $value['price'],
                         $value['link'],
-                        $img
+                        $img,
+                        $value['release_date']
                     );
                     fputcsv($output, $item);
                 }
