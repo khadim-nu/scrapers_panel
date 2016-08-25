@@ -18,7 +18,7 @@
                     <li><a href="<?= base_url(); ?>admin/logout">Logout</a></li>
                 </ul>
             </div>
-            <strong class="logo"><a class="name" href="<?= base_url(); ?>">James Scrapers</a></strong>
+            <strong class="logo"><a class="name" href="<?= base_url(); ?>">Bionic Scrapers</a></strong>
             <div class="links">
                 <a class="add-game" href="<?= base_url(); ?>admin/scrape_items">Scrape Items</a>
                 <a class="" href="<?= base_url(); ?>items">Show Scraped Items</a>

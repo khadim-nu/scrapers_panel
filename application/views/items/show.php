@@ -19,15 +19,10 @@
                                 ?>
                                 <p><strong>URL:</strong> <a href="<?= $row['link']; ?>" target="_blank"><?= $row['link']; ?> </a></p>
                                 <p><strong>TITLE:</strong> <?= $row['title']; ?></p>
-                                <p><strong>PRODUCT_ID:</strong> <?=explode('_', $row['p_id'])[1]; ?></p>
-                                <p><strong>PRICE: </strong><?= $row['price']; ?></p>
-                                <p><strong>Release Date: </strong><?= $row['release_date'] ?></p>
-                                <p>
-                                    <?php
-                                    $img =$row['image_url'];
-                                    ?>
-                                    <img src="<?= $img; ?>" height="200px" width="300px" />
-                                </p>
+                                <p><strong>EMAIL: </strong><?= $row['email']; ?></p>
+                                <p><strong>PHONE: </strong><?= $row['phone'] ?></p>
+                                <p><strong>ADDRESS: </strong><?= $row['address'] ?></p>
+                               
                                 <br><hr>
                                 <br>
                                 <?php

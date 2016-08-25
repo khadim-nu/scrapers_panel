@@ -60,18 +60,12 @@ class Items extends MY_Controller {
 
             $items    = $this->Items_model->get_all($limit    = FALSE, $start    = 0, $order_by = "id DESC", "p_id like ", "%$id%");
 
-            $items_percsv = 20;
-            foreach ($items as $key => $value) {
+           foreach ($items as $key => $value) {
                 if (!empty($value['title'])) {
                     $img    = $value['image_url'];
-                    $p_id    = explode("_", $value['p_id']);
                     $item   = array(
                         $value['title'],
-                        $p_id[1],
-                        $value['price'],
-                        $value['link'],
-                        $img,
-                        $value['release_date']
+                        $value['address'],
                     );
                     fputcsv($output, $item);
                 }
