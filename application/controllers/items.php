@@ -11,7 +11,7 @@ class Items extends MY_Controller {
         $this->load->model('Categories_model');
     }
 
-    public function adidas() {
+    public function ncdd() {
         $dir     = __DIR__;
         $dir     = explode("application", $dir);
         $dir     = $dir[0];
