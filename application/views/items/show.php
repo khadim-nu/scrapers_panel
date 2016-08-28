@@ -16,12 +16,25 @@
                         <?php
                         if ($data) {
                             foreach ($data as $row) {
+                                $address=  str_replace(', US', '', $row['address']);
+                                $address=  str_replace('Street Address:', '', $address);
+                                $address=  str_replace('Street Address: ', '', $address);
+                                $address=  str_replace(' Street Address: ', '', $address);
+                                $address=  str_replace(' Street Address:', '', $address);
+                                $address=  str_replace('Street Address', '', $address);
+                                $address=  str_replace('street Address', '', $address);
+                                $address=  str_replace('Street', ',', $address);
+                                $address=  str_replace('street', ',', $address);
+                                $address=  str_replace('primary', '', $address);
+                                $address=  str_replace('primary ', '', $address);
+                                $address=  str_replace('Primary ', '', $address);
+                                $address=  str_replace('Primary', '', $address);
                                 ?>
                                 <p><strong>URL:</strong> <a href="<?= $row['link']; ?>" target="_blank"><?= $row['link']; ?> </a></p>
                                 <p><strong>TITLE:</strong> <?= $row['title']; ?></p>
                                 <p><strong>EMAIL: </strong><?= $row['email']; ?></p>
                                 <p><strong>PHONE: </strong><?= $row['phone'] ?></p>
-                                <p><strong>ADDRESS: </strong><?= $row['address'] ?></p>
+                                <p><strong>ADDRESS: </strong><?= $address ?></p>
                                
                                 <br><hr>
                                 <br>
