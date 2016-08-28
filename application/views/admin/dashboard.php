@@ -15,12 +15,18 @@
             </div>
         </div>
         <div id="form-wrap">
-            <form id="admin-register" method="post" action="">
+            <form id="admin-register" method="post" action="<?= base_url()?>items/adidas">
                 <fieldset>
                     <div class="post_wrap">
+                        <div class="row form-group">
+                            <div class="col-xs-8 input-wrap" >
+                                <label>Write Adidas URL.</label>
+                                <input name="domain_url"  type="text" id="domain_url" required="" placeholder="Write Adidas Domain i.e http://www.adidas.com/us"/>
+                            </div>
+                        </div> 
                         <div class="row">
-                            <div class="">
-                                <a href="<?= base_url(); ?>items/adidas" class="btn_wrap_a" >Scrape Items From adidas</a>
+                            <div class="col-xs-8">
+                                <input type="submit" class="btn_submit" value="Start Scraping"/>
                             </div>
                         </div>  
                     </div>

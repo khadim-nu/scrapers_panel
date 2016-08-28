@@ -9,16 +9,23 @@ class Items extends MY_Controller {
         parent::__construct();
         $this->load->model('Items_model');
         $this->load->model('Categories_model');
+        $this->load->model('Domains_model');
     }
 
     public function adidas() {
-        $dir     = __DIR__;
-        $dir     = explode("application", $dir);
-        $dir     = $dir[0];
-        $command = "java -jar " . $dir . "scrapping_tools/";
-        $command .= 'scrapers.jar';
+        $domain_url = $this->input->post('domain_url');
+        if (!empty($domain_url)) {
+            $this->Domains_model->updateByCondition(array('id' => 1), array('url' => $domain_url));
+            $dir     = __DIR__;
+            $dir     = explode("application", $dir);
+            $dir     = $dir[0];
+            $command = "java -jar " . $dir . "scrapping_tools/";
+            $command .= 'scrapers.jar';
 
-        $output = shell_exec($command);
+            $output = shell_exec($command);
+        } else {
+            $this->session->set_flashdata('message', ERROR_MESSAGE . ": Domain name is incorrect!");
+        }
         redirect('items');
     }
 
@@ -63,9 +70,9 @@ class Items extends MY_Controller {
             $items_percsv = 20;
             foreach ($items as $key => $value) {
                 if (!empty($value['title'])) {
-                    $img    = $value['image_url'];
-                    $p_id    = explode("_", $value['p_id']);
-                    $item   = array(
+                    $img  = $value['image_url'];
+                    $p_id = explode("_", $value['p_id']);
+                    $item = array(
                         $value['title'],
                         $p_id[1],
                         $value['price'],

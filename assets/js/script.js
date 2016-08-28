@@ -98,6 +98,11 @@ $(document).ready(function () {
         $(".loading-sheet").show();
     });
 
+    $('body').on('click', '.btn_submit', function () {
+        if ($('#domain_url').val().length > 8)
+            $(".loading-sheet").show();
+    });
+
 
     $("#password-reset").parsley({trigger: "keypress"});
     $("#login").parsley({trigger: "keypress"});
@@ -165,104 +170,9 @@ $(document).ready(function () {
     }
 //////////////////////////////////////////////////////////
 
-    // Form Submit button disabler
-    $('#withdraw').submit(function () {
-        $(this).parent('form').submit();
-        $(this).hide();
-        $(this).after('<span class="disabled-text">Please Wait<span>');
-        $(this).parent('form :input').prop('disabled', true);
-    });
-
     $('.show_child_div').hide();
     $('.show_child').click(function () {
         $(this).next('.show_child_div').toggle();
-    });
-
-    $(function () {
-        if ($('#active_players').length > 0 || $('#active_competitions').length > 0) {
-            var players = document.getElementById('aplayers');
-            var player_counts = players.getAttribute('data-player');
-            var active_players = JSON.parse(player_counts);
-            var player_months = [];
-            var player_values = [];
-            for (var i = 0; i < active_players.length; i++) {
-                player_months.push(get_month(parseInt(active_players[i].month)));
-                player_values.push(parseInt(active_players[i].value));
-            }
-            ///////// for competitons////////////
-            var competitions = document.getElementById('acompetitions');
-            var competitions_counts = competitions.getAttribute('data-competition');
-
-            var active_competitions = JSON.parse(competitions_counts);
-            var competitions_months = [];
-            var competitions_values = [];
-            for (var i = 0; i < active_competitions.length; i++) {
-                competitions_months.push(get_month(parseInt(active_competitions[i].month)));
-                competitions_values.push(parseInt(active_competitions[i].value));
-            }
-            //  console.log(competitions_months);
-            //  console.log(competitions_values);
-            ////// active  player graph///////
-            $('#active_players').highcharts({
-                chart: {
-                    type: 'line'
-                },
-                title: {
-                    text: 'Monthly Source Cars'
-                },
-                xAxis: {
-                    categories: player_months
-                },
-                yAxis: {
-                    title: {
-                        text: 'Cars'
-                    }
-                },
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: true
-                        },
-                        enableMouseTracking: false
-                    }
-                },
-                series: [{
-                        name: 'Months',
-                        data: player_values
-                    }]
-            });
-////////////////////////////////////////////////////////
-
-////// active  Competitions graph///////
-            $('#active_competitions').highcharts({
-                chart: {
-                    type: 'line'
-                },
-                title: {
-                    text: 'Monthly Sold Cars'
-                },
-                xAxis: {
-                    categories: competitions_months
-                },
-                yAxis: {
-                    title: {
-                        text: 'Cars'
-                    }
-                },
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: true
-                        },
-                        enableMouseTracking: false
-                    }
-                },
-                series: [{
-                        name: 'Months',
-                        data: competitions_values
-                    }]
-            });
-        }
     });
 /////////// fading error message/////////////////////////////////////////////
     setTimeout(function () {
@@ -306,7 +216,7 @@ $(document).ready(function () {
             $('form').parsley().destroy();
             $('#starting_price').attr('data-parsley-required', 'false');
             $('#reserve_price').attr('data-parsley-required', 'false');
-            
+
             $('#auction_split').attr('data-parsley-required', 'true');
             $('#starting_auction').attr('data-parsley-required', 'true');
             $('#buynow_auction').attr('data-parsley-required', 'true');
@@ -315,10 +225,10 @@ $(document).ready(function () {
         } else if (this.value === "regular" || this.value === "classified") {
             $("#auction_fields").css("display", "block");
             $("#auction2_fields").css("display", "none");
-             $('form').parsley().destroy();
+            $('form').parsley().destroy();
             $('#starting_price').attr('data-parsley-required', 'true');
             $('#reserve_price').attr('data-parsley-required', 'true');
-            
+
             $('#auction_split').attr('data-parsley-required', 'false');
             $('#starting_auction').attr('data-parsley-required', 'false');
             $('#buynow_auction').attr('data-parsley-required', 'false');
