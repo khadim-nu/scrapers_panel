@@ -149,6 +149,9 @@ class MY_Model extends CI_Model {
         $this->db->delete($this->table_name);
         return $this->db->affected_rows();
     }
+      public function truncate() {
+        return $this->db->truncate($this->table_name);
+    }
 
     /*
      * 

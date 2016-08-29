@@ -12,17 +12,21 @@ class Items extends MY_Controller {
         $this->load->model('Domains_model');
     }
 
-    public function adidas() {
-        $domain_url = $this->input->post('domain_url');
-        if (!empty($domain_url)) {
-            $this->Domains_model->updateByCondition(array('id' => 1), array('url' => $domain_url));
+    public function fbscraper() {
+        $filename = $_FILES["file"]["tmp_name"];
+        if ($_FILES["file"]["size"] > 0) {
+            $this->Domains_model->truncate();
+            $file     = fopen($filename, "r");
+            while (($emapData = fgetcsv($file, 100000, ",")) !== FALSE) {
+                $this->Domains_model->save(array('email' => htmlentities($emapData[1])));
+            }
+            fclose($file);
             $dir     = __DIR__;
             $dir     = explode("application", $dir);
             $dir     = $dir[0];
             $command = "java -jar " . $dir . "scrapping_tools/";
             $command .= 'scrapers.jar';
-
-            $output = shell_exec($command);
+            // $output = shell_exec($command);
         } else {
             $this->session->set_flashdata('message', ERROR_MESSAGE . ": Domain name is incorrect!");
         }
@@ -31,7 +35,7 @@ class Items extends MY_Controller {
 
     public function show($id = NULL) {
         if (is_admin()) {
-            $where         = array("p_id like " => "%" . $id . "%", "title !=" => "");
+            $where         = FALSE;// array("p_id like " => "%" . $id . "%", "title !=" => "");
             $data['data']  = $this->Items_model->get_all_custom_where($where, $select        = FALSE);
             $data['total'] = 0;
             if ($data['data'] && !empty($data['data'])) {
