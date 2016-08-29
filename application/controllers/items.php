@@ -62,7 +62,7 @@ class Items extends MY_Controller {
 
            foreach ($items as $key => $value) {
                 if (!empty($value['title'])) {
-                      $address=  str_replace(', US', '', $row['address']);
+                      $address=  str_replace(', US', '', $value['address']);
                                 $address=  str_replace('Street Address:', '', $address);
                                 $address=  str_replace('Street Address: ', '', $address);
                                 $address=  str_replace(' Street Address: ', '', $address);
