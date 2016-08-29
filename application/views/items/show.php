@@ -18,16 +18,32 @@
                             foreach ($data as $row) {
                                 ?>
                                 <p><strong>URL:</strong> <a href="<?= $row['link']; ?>" target="_blank"><?= $row['link']; ?> </a></p>
+                                <p><strong>EMAIL:</strong> <?= $row['email']; ?></p>
                                 <p><strong>TITLE:</strong> <?= $row['title']; ?></p>
-                                <p><strong>PRODUCT_ID:</strong> <?=explode('_', $row['p_id'])[1]; ?></p>
-                                <p><strong>PRICE: </strong><?= $row['price']; ?></p>
-                                <p><strong>Release Date: </strong><?= $row['release_date'] ?></p>
-                                <p>
-                                    <?php
-                                    $img =$row['image_url'];
-                                    ?>
-                                    <img src="<?= $img; ?>" height="200px" width="300px" />
-                                </p>
+                                <p><strong>FB ID:</strong> <?= $row['p_id']; ?></p>
+                                <?php
+                                $information = explode(";", $row['information']);
+                                foreach ($information as $key => $value) {
+                                    if (!empty($value)) {
+                                        $inf = explode(":", $value);
+                                        ?>
+                                        <p><strong><?= isset($inf[0]) ? $inf[0] : ""; ?>:</strong> <?= isset($inf[1]) ? $inf[1] : ""; ?></p>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                                        <?php
+                                $favourites = explode(";", $row['favourites']);
+                                foreach ($favourites as $key => $value) {
+                                    if (!empty($value)) {
+                                        $inf = explode(":", $value);
+                                        ?>
+                                        <p><strong><?= isset($inf[0]) ? $inf[0] : ""; ?>:</strong> <?= isset($inf[1]) ? $inf[1] : ""; ?></p>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                                <p><img src="<?= $row['image_url']; ?>" height="200px" width="300px" /></p>
                                 <br><hr>
                                 <br>
                                 <?php

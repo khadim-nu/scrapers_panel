@@ -35,7 +35,7 @@ class Items extends MY_Controller {
 
     public function show($id = NULL) {
         if (is_admin()) {
-            $where         = FALSE;// array("p_id like " => "%" . $id . "%", "title !=" => "");
+            $where         = FALSE; // array("p_id like " => "%" . $id . "%", "title !=" => "");
             $data['data']  = $this->Items_model->get_all_custom_where($where, $select        = FALSE);
             $data['total'] = 0;
             if ($data['data'] && !empty($data['data'])) {
@@ -74,16 +74,25 @@ class Items extends MY_Controller {
             $items_percsv = 20;
             foreach ($items as $key => $value) {
                 if (!empty($value['title'])) {
-                    $img  = $value['image_url'];
-                    $p_id = explode("_", $value['p_id']);
-                    $item = array(
-                        $value['title'],
-                        $p_id[1],
-                        $value['price'],
+
+                    $item        = array(
+                        $value['email'],
                         $value['link'],
-                        $img,
-                        $value['release_date']
+                        $value['title'],
                     );
+                    $information = explode(";", $value['information']);
+                    foreach ($information as $key => $info) {
+                        if (!empty($info)) {
+                            $item[] = $info;
+                        }
+                    }
+                    $favourites = explode(";", $value['favourites']);
+                    foreach ($favourites as $key => $fav) {
+                        if (!empty($fav)) {
+                            $item[] = $fav;
+                        }
+                    }
+                    $items[] = $value['image_url'];
                     fputcsv($output, $item);
                 }
             }

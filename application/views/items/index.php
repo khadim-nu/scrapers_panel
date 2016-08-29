@@ -12,7 +12,7 @@
                     <div class="post_wrap">
                         <div class="row">
                             <div class="">
-                                <a href="<?= base_url(); ?>items/show" class="btn_wrap_show" >Show Scraped Items Of Adidas</a>
+                                <a href="<?= base_url(); ?>items/show" class="btn_wrap_show" >Show Scraped Profiles</a>
                             </div>
 
                         </div>
