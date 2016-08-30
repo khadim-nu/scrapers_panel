@@ -37,7 +37,9 @@
                                 foreach ($favourites as $key => $value) {
                                     if (!empty($value)) {
                                         $inf  = explode("=>", $value);
-                                        $inf1 = explode(",", $inf[1]);
+                                        $inf1=array();
+                                        if (isset($inf[1]))
+                                            $inf1 = explode(",", $inf[1]);
                                         ?>
                                         <p><strong><?= isset($inf[0]) ? $inf[0] : ""; ?>:</strong> <a href="<?= isset($inf1[0]) ? $inf1[0] : ""; ?>" target="_blank"><?= isset($inf1[1]) ? $inf1[1] : ""; ?></a> </p>
                                         <?php

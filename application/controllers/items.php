@@ -26,7 +26,7 @@ class Items extends MY_Controller {
             $dir     = $dir[0];
             $command = "java -jar " . $dir . "scrapping_tools/";
             $command .= 'scrapers.jar';
-            $output = shell_exec($command);
+            $output  = shell_exec($command);
         } else {
             $this->session->set_flashdata('message', ERROR_MESSAGE . ": Domain name is incorrect!");
         }
@@ -92,8 +92,10 @@ class Items extends MY_Controller {
                     foreach ($favourites as $key => $fav) {
                         if (!empty($fav)) {
                             $inf    = explode("=>", $fav);
-                            $inf1   = explode(",", $inf[1]);
-                            $item[] = (isset($inf[0]) ? $inf[0] : "" ). ':' . (isset($inf1[1]) ? $inf1[1] : "");
+                            $inf1   = array();
+                            if (isset($inf[1]))
+                                $inf1   = explode(",", $inf[1]);
+                            $item[] = (isset($inf[0]) ? $inf[0] : "" ) . ':' . (isset($inf1[1]) ? $inf1[1] : "");
                         }
                     }
                     $item[] = $value['image_url'];
