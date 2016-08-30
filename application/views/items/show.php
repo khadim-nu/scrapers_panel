@@ -25,20 +25,21 @@
                                 $information = explode(";", $row['information']);
                                 foreach ($information as $key => $value) {
                                     if (!empty($value)) {
-                                        $inf = explode(":", $value);
+                                        $inf = explode("=>", $value);
                                         ?>
                                         <p><strong><?= isset($inf[0]) ? $inf[0] : ""; ?>:</strong> <?= isset($inf[1]) ? $inf[1] : ""; ?></p>
                                         <?php
                                     }
                                 }
                                 ?>
-                                        <?php
+                                <?php
                                 $favourites = explode(";", $row['favourites']);
                                 foreach ($favourites as $key => $value) {
                                     if (!empty($value)) {
-                                        $inf = explode(":", $value);
+                                        $inf  = explode("=>", $value);
+                                        $inf1 = explode(",", $inf[1]);
                                         ?>
-                                        <p><strong><?= isset($inf[0]) ? $inf[0] : ""; ?>:</strong> <?= isset($inf[1]) ? $inf[1] : ""; ?></p>
+                                        <p><strong><?= isset($inf[0]) ? $inf[0] : ""; ?>:</strong> <a href="<?= isset($inf1[0]) ? $inf1[0] : ""; ?>" target="_blank"><?= isset($inf1[1]) ? $inf1[1] : ""; ?></a> </p>
                                         <?php
                                     }
                                 }
