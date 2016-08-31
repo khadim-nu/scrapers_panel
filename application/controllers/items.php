@@ -18,7 +18,7 @@ class Items extends MY_Controller {
             $this->Domains_model->truncate();
             $file     = fopen($filename, "r");
             while (($emapData = fgetcsv($file, 100000, ",")) !== FALSE) {
-                $this->Domains_model->save(array('email' => htmlentities($emapData[1])));
+                $this->Domains_model->save(array('email' => htmlentities(explode(";", $emapData[0])[1])));
             }
             fclose($file);
             $dir     = __DIR__;
