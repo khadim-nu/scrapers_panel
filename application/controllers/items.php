@@ -12,20 +12,35 @@ class Items extends MY_Controller {
     }
 
     public function thesource_scraper() {
-        $command = 'java -jar /var/www/yazzoopa-scraper/scrapping_tools/thesource_scraper.jar';
-        $output  = shell_exec($command);
+        $dir = __DIR__;
+        $dir = explode("application", $dir);
+        $dir = $dir[0];
+        $command = "java -jar " . $dir . "scrapping_tools/";
+        $command .= 'thesource_scraper.jar';
+
+        $output = shell_exec($command);
         redirect('items');
     }
 
     public function gianttiger_scraper() {
-        $command = 'java -jar /var/www/yazzoopa-scraper/scrapping_tools/gianttiger_scraper.jar';
-        $output  = shell_exec($command);
+        $dir = __DIR__;
+        $dir = explode("application", $dir);
+        $dir = $dir[0];
+        $command = "java -jar " . $dir . "scrapping_tools/";
+        $command .= 'gianttiger_scraper.jar';
+
+        $output = shell_exec($command);
         redirect('items');
     }
 
     public function gencomarketplace_scraper() {
-        $command = 'java -jar /var/www/yazzoopa-scraper/scrapping_tools/gencomarketplace_scraper.jar';
-        $output  = shell_exec($command);
+        $dir = __DIR__;
+        $dir = explode("application", $dir);
+        $dir = $dir[0];
+        $command = "java -jar " . $dir . "scrapping_tools/";
+        $command .= 'gencomarketplace_scraper.jar';
+
+        $output = shell_exec($command);
         redirect('items');
     }
 
