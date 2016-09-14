@@ -76,10 +76,13 @@ class Items extends MY_Controller {
                                 $address=  str_replace('Primary ', '', $address);
                                 $address=  str_replace('Primary', '', $address);
                     $img    = $value['image_url'];
+                    $address=  explode(',', $address);
                     $item   = array(
-                        $value['title'],
-                        $value['address'],
+                        $value['title']
                     );
+                    foreach ($address as $value) {
+                        $item[]=$value;
+                    }
                     fputcsv($output, $item);
                 }
             }
