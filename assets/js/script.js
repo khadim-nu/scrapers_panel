@@ -103,11 +103,9 @@ $(document).ready(function () {
     $("#login").parsley({trigger: "keypress"});
     $("#register").parsley({trigger: "keypress"});
     $("#admin-register").parsley({trigger: "keypress"});
-    $("#dev-uploadgame").parsley({trigger: "keypress"});
     $("#admin-create-comeptiton").parsley({trigger: "keypress"});
     $("#searchform").parsley({trigger: "keypress"});
     $("#send-message").parsley({trigger: "keypress"});
-    $("#withdraw").parsley({trigger: "keypress"});
 
     $(function () {
         $.datepicker.setDefaults({

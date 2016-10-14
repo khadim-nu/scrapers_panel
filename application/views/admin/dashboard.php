@@ -20,7 +20,7 @@
                     <div class="post_wrap">
                         <div class="row">
                             <div class="">
-                                <a href="<?= base_url(); ?>items/ncdd" class="btn_wrap_a" >Scrape Items From ncdd.com</a>
+                                <a href="<?= base_url(); ?>items/vaperanger" class="btn_wrap_a" >Start Scraper</a>
                             </div>
                         </div>  
                     </div>

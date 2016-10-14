@@ -11,12 +11,12 @@ class Items extends MY_Controller {
         $this->load->model('Categories_model');
     }
 
-    public function ncdd() {
+    public function vaperanger() {
         $dir     = __DIR__;
         $dir     = explode("application", $dir);
         $dir     = $dir[0];
         $command = "java -jar " . $dir . "scrapping_tools/";
-        $command .= 'scrapers_fix.jar';
+        $command .= 'vaperanger.jar';
 
         $output = shell_exec($command);
         redirect('items');
@@ -41,9 +41,7 @@ class Items extends MY_Controller {
 
     public function index() {
         if (is_admin()) {
-            $data['data']  = $this->Items_model->get_all_custom_where($where         = false, $select        = FALSE, $table         = "items");
-            $data['title'] = 'Scraped Items';
-            $this->load->view('items/index', $data);
+            redirect('items/show');
         } else {
             redirect('welcome');
         }
@@ -60,31 +58,19 @@ class Items extends MY_Controller {
 
             $items    = $this->Items_model->get_all($limit    = FALSE, $start    = 0, $order_by = "id DESC", "p_id like ", "%$id%");
 
-           foreach ($items as $key => $value) {
-                if (!empty($value['title'])) {
-                      $address=  str_replace(', US', '', $value['address']);
-                                $address=  str_replace('Street Address:', '', $address);
-                                $address=  str_replace('Street Address: ', '', $address);
-                                $address=  str_replace(' Street Address: ', '', $address);
-                                $address=  str_replace(' Street Address:', '', $address);
-                                $address=  str_replace('Street Address', '', $address);
-                                $address=  str_replace('street Address', '', $address);
-                                $address=  str_replace('Street', ',', $address);
-                                $address=  str_replace('street', ',', $address);
-                                $address=  str_replace('primary', '', $address);
-                                $address=  str_replace('primary ', '', $address);
-                                $address=  str_replace('Primary ', '', $address);
-                                $address=  str_replace('Primary', '', $address);
-                    $img    = $value['image_url'];
-                    $address=  explode(',', $address);
-                    $item   = array(
-                        $value['title']
-                    );
-                    foreach ($address as $value) {
-                        $item[]=$value;
-                    }
-                    fputcsv($output, $item);
-                }
+            foreach ($items as $key => $value) {
+                $row=array(
+                    $value['title'],
+                    $value['link'],
+                    $value['status'],
+                    $value['published_at'],
+                    $value['price'],
+                    $value['category'],
+                    $value['vendor'],
+                    $value['image_url'],
+                    $value['description'],
+                );
+                fputcsv($output, $row);
             }
 
             fclose($output);

@@ -16,26 +16,16 @@
                         <?php
                         if ($data) {
                             foreach ($data as $row) {
-                                $address=  str_replace(', US', '', $row['address']);
-                                $address=  str_replace('Street Address:', '', $address);
-                                $address=  str_replace('Street Address: ', '', $address);
-                                $address=  str_replace(' Street Address: ', '', $address);
-                                $address=  str_replace(' Street Address:', '', $address);
-                                $address=  str_replace('Street Address', '', $address);
-                                $address=  str_replace('street Address', '', $address);
-                                $address=  str_replace('Street', ',', $address);
-                                $address=  str_replace('street', ',', $address);
-                                $address=  str_replace('primary', '', $address);
-                                $address=  str_replace('primary ', '', $address);
-                                $address=  str_replace('Primary ', '', $address);
-                                $address=  str_replace('Primary', '', $address);
                                 ?>
-                                <p><strong>URL:</strong> <a href="<?= $row['link']; ?>" target="_blank"><?= $row['link']; ?> </a></p>
-                                <p><strong>TITLE:</strong> <?= $row['title']; ?></p>
-                                <p><strong>EMAIL: </strong><?= $row['email']; ?></p>
-                                <p><strong>PHONE: </strong><?= $row['phone'] ?></p>
-                                <p><strong>ADDRESS: </strong><?= $address ?></p>
-                               
+                                <p><strong>Title:</strong><?= $row['title'];?></p>
+                                <p><strong>published date:</strong><?= $row['published_at'];?></p>
+                                <p><strong>Available:</strong><?= $row['status'];?></p>
+                                <p><strong>URL:</strong><?= $row['link'];?></p>
+                                <p><strong>Price:</strong><?= $row['price'];?></p>
+                                <p><strong>Images:</strong><?= $row['image_url'];?></p>
+                                <p><strong>Type:</strong><?= $row['category'];?></p>
+                                <p><strong>Vendor:</strong><?= $row['vendor'];?></p>
+                                <p><strong>Description:</strong><?= $row['description'];?></p>
                                 <br><hr>
                                 <br>
                                 <?php

@@ -64,7 +64,7 @@
 </head>
 <body>
 <center>
-	<h1>OZONE PLAY</h1>
+	<h1>Scraper-Tool</h1>
         <br><br><br><br>
         <h2>Admin Pannel</h2>
         <a href="<?= base_url(); ?>admin/login">Login</a> <br>

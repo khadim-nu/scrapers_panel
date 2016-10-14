@@ -3,7 +3,7 @@
     <?php $this->load->view('include/admin/sidebar'); ?>
     <div id="content">
         <div class="page-head">
-            <span class="page-heading">Show Scrape Items</span>
+            <span class="page-heading">Scraped Items</span>
             <?php $this->load->view('message'); ?>
         </div>
         <div id="form-wrap">
@@ -12,7 +12,7 @@
                     <div class="post_wrap">
                         <div class="row">
                             <div class="">
-                                <a href="<?= base_url(); ?>items/show/ncdd" class="btn_wrap_show" >Show Scraped Items Of ncdd.com</a>
+                                <a href="<?= base_url(); ?>items/show/ncdd" class="btn_wrap_show" >Show Scraped Items</a>
                             </div>
 
                         </div>

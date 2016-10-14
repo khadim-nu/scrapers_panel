@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 define('APP_STATIC_URL', 'http://www.test.com/');
 
-define('APP_NAME', 'Temp Admin');
+define('APP_NAME', 'Corben-Tool');
 define('ADMIN_EMAIL', 'spdevtesting@gmail.com');
 define('ADMIN_EMAIL_PASSWORD', 'sp@fiverr');
 define('ADMIN_NAME', 'Temp Admin');
@@ -47,7 +47,6 @@ define('FOPEN_READ_WRITE_CREATE', 'a+b');
 define('FOPEN_WRITE_CREATE_STRICT', 'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
 
-// OZone-play Characters Limit constants
 define('TITLE_PATTERN', "^[a-z _A-Z-.]+$");
 define('NAME_PATTERN', "^[a-z A-Z]+$");
 define('PHONE_PATTERN', "^[-0-9+]+$");

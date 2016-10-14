@@ -24,9 +24,4 @@
         <link rel="stylesheet" href="<?= CSS_URL; ?>jquery.dataTables.min.css" media="all" type="text/css">
         
         <link rel="stylesheet" href="<?= CSS_URL; ?>jquery-ui.css">
-        
-        <link rel="stylesheet" href="<?= CSS_URL; ?>sweet-alert.css" media="all" type="text/css"> 
-        
-        <script type="text/javascript" src="<?= JS_URL; ?>sweet-alert.min.js"></script>
-    
     </head>
