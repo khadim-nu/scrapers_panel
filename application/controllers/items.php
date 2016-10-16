@@ -179,8 +179,6 @@ class Items extends MY_Controller {
                     $continue = FALSE;
                 }
                 $pageNo++;
-
-                die('here');
             }
         }
     }
