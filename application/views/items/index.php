@@ -12,7 +12,7 @@
                     <div class="post_wrap">
                         <div class="row">
                             <div class="">
-                                <a href="<?= base_url(); ?>items/show/ncdd" class="btn_wrap_show" >Show Scraped Items</a>
+                                <a href="<?= base_url(); ?>items/show" class="btn_wrap_show" >Show Scraped Items</a>
                             </div>
 
                         </div>

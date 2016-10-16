@@ -17,15 +17,15 @@
                         if ($data) {
                             foreach ($data as $row) {
                                 ?>
-                                <p><strong>Title:</strong><?= $row['title'];?></p>
-                                <p><strong>published date:</strong><?= $row['published_at'];?></p>
-                                <p><strong>Available:</strong><?= $row['status'];?></p>
-                                <p><strong>URL:</strong><?= $row['link'];?></p>
-                                <p><strong>Price:</strong><?= $row['price'];?></p>
-                                <p><strong>Images:</strong><?= $row['image_url'];?></p>
-                                <p><strong>Type:</strong><?= $row['category'];?></p>
-                                <p><strong>Vendor:</strong><?= $row['vendor'];?></p>
-                                <p><strong>Description:</strong><?= $row['description'];?></p>
+                                <p><strong>Title:</strong><?= $row['title']; ?></p>
+                                <p><strong>published date:</strong><?= $row['published_at']; ?></p>
+                                <p><strong>Available:</strong><?= $row['status']; ?></p>
+                                <p><strong>URL:</strong><a href="<?= $row['link']; ?>" target="blank"><?= $row['link']; ?></a></p>
+                                <p><strong>Price:</strong>$<?= $row['price']; ?></p>
+                                <p><strong>Images:</strong><?= $row['image_url']; ?></p>
+                                <p><strong>Type:</strong><?= $row['category']; ?></p>
+                                <p><strong>Vendor:</strong><?= $row['vendor']; ?></p>
+                                <p><strong>Description:</strong><?= $row['description']; ?></p>
                                 <br><hr>
                                 <br>
                                 <?php
