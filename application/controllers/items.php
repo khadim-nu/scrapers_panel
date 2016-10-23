@@ -68,31 +68,87 @@ class Items extends MY_Controller {
             header('Content-Type: text/csv; charset=utf-8');
             header('Content-Disposition: attachment; filename=' . $name . '.csv');
             $output = fopen('php://output', 'wt');
-            fputcsv($output, array('title',
-                'link',
-                'available',
-                'published_at',
-                'price',
-                'type',
-                'vendor',
-                'image_url',
-                'description')); //The column heading row of the csv file
+            fputcsv($output, array(
+                'product url extension',
+                'Title',
+                'Body (HTML)',
+                'Vendor',
+                'Type',
+                'Tags',
+                //
+                'Option1 Name',
+                'Option1 Value',
+                'Option2 Name',
+                'Option2 Value',
+                //
+                'Variant Price',
+                'Variant Compare At Price',
+                //
+                'Image Src',
+                'Image Alt Text',
+                'published_at'
+            )); //The column heading row of the csv file
 
             $items = $this->Items_model->get_all($limit = FALSE, $start = 0, $order_by = "id DESC", "p_id like ", "%$id%");
 
             foreach ($items as $key => $value) {
-                $row = array(
-                    $value['title'],
-                    $value['link'],
-                    $value['status'],
-                    $value['published_at'],
-                    '$' . $value['price'],
-                    $value['category'],
-                    $value['vendor'],
-                    $value['image_url'],
-                    $value['description'],
-                );
-                fputcsv($output, $row);
+
+//                /450,-:-800,-:-450,-:-800,-:-450,-:-800,-:-450,-:-800,-:-
+                $varinants = explode('-:-', $value['variants']);
+
+                //Nicotine,0MG,3MG,6MG,12MG-:-Size,15ml,30ml-:-
+                $options = explode('-:-', $value['options']);
+                $opt1 = isset($options[0]) ? explode(',', $options[0]) : array();
+                $opt2 = isset($options[1]) ? explode(',', $options[1]) : array();
+
+                foreach ($varinants as $keyv1 => $v1) {
+                    $temp_varints = explode(',', $v1);
+                    if ($keyv1 == 0) {
+                        $row = array(
+                            explode('products/', $value['link'])[1],
+                            $value['title'],
+                            $value['description'],
+                            $value['vendor'],
+                            $value['category'],
+                            $value['tags'],
+                            (isset($opt1[0])) ? $opt1[0] : '',
+                            (isset($opt1[1])) ? $opt1[1] : '',
+                            (isset($opt2[0])) ? $opt2[0] : '',
+                            (isset($opt2[1])) ? $opt2[1] : '',
+                            /*
+                             * 
+                             */
+                            (isset($temp_varints[0])) ? $temp_varints[0] : '',
+                            (isset($temp_varints[1])) ? $temp_varints[1] : '',
+                            $value['image_url'],
+                            $value['title'],
+                            $value['published_at'],
+                        );
+                    } else {
+                        $row = array(
+                            explode('products/', $value['link'])[1],
+                            '',
+                            '',
+                            '',
+                            '',
+                            '',
+                            '',
+                            (isset($opt1[$keyv1 + 1])) ? $opt1[$keyv1 + 1] : '',
+                            '',
+                            (isset($opt2[$keyv1 + 1])) ? $opt2[$keyv1 + 1] : '',
+                            /*
+                             * 
+                             */
+                            (isset($temp_varints[0])) ? $temp_varints[0] : '',
+                            (isset($temp_varints[1])) ? $temp_varints[1] : '',
+                            '',
+                            '',
+                            '',
+                        );
+                    }
+
+                    fputcsv($output, $row);
+                }
             }
 
             fclose($output);
@@ -160,6 +216,19 @@ class Items extends MY_Controller {
                         $product_data = json_decode($product_data);
                         // print_r( $product_data);
                         // die();
+                        $options = $product_data->options;
+                        $options_str = '';
+                        foreach ($options as $key => $value) {
+                            $options_str .=$value->name . ',' . implode(',', $value->values);
+                            $options_str .='-:-';
+                        }
+
+                        $variants = $product_data->variants;
+                        $variants_str = '';
+                        foreach ($variants as $key => $value) {
+                            $variants_str .=$value->price . ',' . $value->compare_at_price;
+                            $variants_str .='-:-';
+                        }
                         $item = array(
                             'p_id' => $product_data->id,
                             'category' => $product_data->type,
@@ -167,14 +236,25 @@ class Items extends MY_Controller {
                             'published_at' => $product_data->published_at,
                             'title' => $product_data->title,
                             'status' => $product_data->available,
+                            'tags' => implode(',', $product_data->tags),
                             'link' => 'https://vaperanger.com' . $product_data->url,
                             'price' => number_format($product_data->price / 100, 2, '.', ' '),
+                            // 'price_min' => number_format($product_data->price_min / 100, 2, '.', ' '),
+//                            'price_max' => number_format($product_data->price_max / 100, 2, '.', ' '),
+//                            'price_varies' => number_format($product_data->price_varies / 100, 2, '.', ' '),
+//                            'compare_at_price' => number_format($product_data->compare_at_price / 100, 2, '.', ' '),
+//                            'compare_at_price_min' => number_format($product_data->compare_at_price_min / 100, 2, '.', ' '),
+//                            'compare_at_price_max' => number_format($product_data->compare_at_price_max / 100, 2, '.', ' '),
                             'image_url' => $product_data->featured_image,
                             'description' => $product_data->description,
-                            'created_at' => $product_data->created_at
+                            'created_at' => $product_data->created_at,
+                            'options' => $options_str,
+                            'variants ' => $variants_str
                         );
+
                         $this->Items_model->save($item);
                     }
+                    die;
                 } else {
                     $continue = FALSE;
                 }
