@@ -254,7 +254,7 @@ class Items extends MY_Controller {
 
                         $this->Items_model->save($item);
                     }
-                    die;
+                    die('Please ask developer to configure it for all site. :)');
                 } else {
                     $continue = FALSE;
                 }
