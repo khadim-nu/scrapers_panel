@@ -252,6 +252,7 @@ class Items extends MY_Controller {
                             'variants ' => $variants_str
                         );
 
+                        $this->Items_model->remove_record_where('p_id',$item['p_id']);
                         $this->Items_model->save($item);
                     }
                     die('Please ask developer to configure it for all site. :)');
