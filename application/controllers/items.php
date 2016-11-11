@@ -93,7 +93,7 @@ class Items extends MY_Controller {
 
             foreach ($items as $key => $value) {
 
-//                /450,-:-800,-:-450,-:-800,-:-450,-:-800,-:-450,-:-800,-:-
+//                0MG,,3200,  -:-   3MG,,3200,  -:-  6MG,,3200,  -:-
                 $varinants = explode('-:-', $value['variants']);
 
                 //Nicotine,0MG,3MG,6MG,12MG-:-Size,15ml,30ml-:-
@@ -112,14 +112,14 @@ class Items extends MY_Controller {
                             $value['category'],
                             $value['tags'],
                             (isset($opt1[0])) ? $opt1[0] : '',
-                            (isset($opt1[1])) ? $opt1[1] : '',
+                            (isset($temp_varints[0])) ? $temp_varints[0] : '',
                             (isset($opt2[0])) ? $opt2[0] : '',
-                            (isset($opt2[1])) ? $opt2[1] : '',
+                            (isset($temp_varints[1])) ? $temp_varints[1] : '',
                             /*
                              * 
                              */
-                            (isset($temp_varints[0])) ? $temp_varints[0] : '',
-                            (isset($temp_varints[1])) ? $temp_varints[1] : '',
+                            (isset($temp_varints[2])) ? $temp_varints[2] : '',
+                            (isset($temp_varints[3])) ? $temp_varints[3] : '',
                             $value['image_url'],
                             $value['title'],
                             $value['published_at'],
@@ -133,14 +133,14 @@ class Items extends MY_Controller {
                             '',
                             '',
                             '',
-                            (isset($opt1[$keyv1 + 1])) ? $opt1[$keyv1 + 1] : '',
+                            (isset($temp_varints[0])) ? $temp_varints[0] : '',
                             '',
-                            (isset($opt2[$keyv1 + 1])) ? $opt2[$keyv1 + 1] : '',
+                            (isset($temp_varints[1])) ? $temp_varints[1] : '',
                             /*
                              * 
                              */
-                            (isset($temp_varints[0])) ? $temp_varints[0] : '',
-                            (isset($temp_varints[1])) ? $temp_varints[1] : '',
+                            (isset($temp_varints[2])) ? $temp_varints[2] : '',
+                            (isset($temp_varints[3])) ? $temp_varints[3] : '',
                             '',
                             '',
                             '',
@@ -226,7 +226,7 @@ class Items extends MY_Controller {
                         $variants = $product_data->variants;
                         $variants_str = '';
                         foreach ($variants as $key => $value) {
-                            $variants_str .=$value->price . ',' . $value->compare_at_price;
+                            $variants_str .=$value->option1 . ',' . $value->option2 . ',' . $value->price . ',' . $value->compare_at_price;
                             $variants_str .='-:-';
                         }
                         $item = array(
