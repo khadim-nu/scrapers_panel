@@ -20,6 +20,12 @@
                     <div class="post_wrap">
                         <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
+                                <label>Price %age to be added in each item</label>
+                                <input name="price"  type="text" id="searchTitle" required="" placeholder="Enter extra price to be added"/>
+                            </div>
+                        </div> 
+                        <div class="row form-group">
+                            <div class="col-xs-8 input-wrap" >
                                 <label for="Section">Section</label><br/>
                                 <select name="section" required="">
                                     <option selected="selected" value="0">--Select Section--</option>
