@@ -15,13 +15,24 @@
             </div>
         </div>
         <div id="form-wrap">
-            <form id="admin-register" method="post" action="<?= base_url()?>items/scrape">
+            <form id="admin-register" method="post" action="<?= base_url() ?>items/scrape">
                 <fieldset>
                     <div class="post_wrap">
                         <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
                                 <label>Search String</label>
                                 <input name="title"  type="text" id="searchTitle" required="" placeholder="Write Item Title"/>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-xs-8 input-wrap" >
+                                <label>Price Range</label>
+                                <input name="greaterThan"  type="number" id="searchTitle" required="" placeholder="Greater than"/>
+                            </div>
+                        </div> 
+                        <div class="row form-group">
+                            <div class="col-xs-8 input-wrap" >
+                                <input name="lessThan"  type="number" id="searchTitle" required="" placeholder="Less than"/>
                             </div>
                         </div> 
                         <div class="row">
