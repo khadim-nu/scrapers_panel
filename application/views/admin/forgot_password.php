@@ -34,6 +34,5 @@
             </div>
         </div>
     </div>
-<?php $this->load->view('include/navigation'); ?>
 </body>
 </html>

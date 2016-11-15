@@ -16,9 +16,7 @@ class Admin extends MY_Controller {
     }
     public function index() {
         if (is_admin()) {
-            $data['user_role'] = 'admin';
-            $data['title'] = 'Dashboard';
-            $this->load->view('items/index', $data);
+            redirect('admin/scrape_items');
         } else {
             redirect('admin/login');
         }

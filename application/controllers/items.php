@@ -12,19 +12,48 @@ class Items extends MY_Controller {
         $this->load->model('Domains_model');
     }
 
-    public function adidas() {
-        $domain_url = $this->input->post('domain_url');
+    public function scrape() {
+        $domain_url = $this->input->post('title');
         if (!empty($domain_url)) {
             $this->Domains_model->updateByCondition(array('id' => 1), array('url' => $domain_url));
-            $dir     = __DIR__;
-            $dir     = explode("application", $dir);
-            $dir     = $dir[0];
-            $command = "java -jar " . $dir . "scrapping_tools/";
-            $command .= 'scrapers.jar';
-
-            $output = shell_exec($command);
+//            $dir     = __DIR__;
+//            $dir     = explode("application", $dir);
+//            $dir     = $dir[0];
+//            $command = "java -jar " . $dir . "scrapping_tools/";
+//            $command .= 'scrapers.jar';
+//
+//            $output = shell_exec($command);
         } else {
-            $this->session->set_flashdata('message', ERROR_MESSAGE . ": Domain name is incorrect!");
+            $this->session->set_flashdata('message', ERROR_MESSAGE . ": Search string is empty.");
+        }
+        redirect('items');
+    }
+
+    public function postOnMaltaPark() {
+        if (is_admin()) {
+            $data['user_role'] = 'admin';
+            $data['title']     = 'Post Itmes On Maltapark';
+            $this->load->view('items/postOnMaltapark', $data);
+        } else {
+            redirect('admin/login');
+        }
+    }
+
+    public function startPosting() {
+        $section = $this->input->post('section');
+        $cat = $this->input->post('category');
+        $wanted = $this->input->post('wanted');
+        if (!empty($cat)) {
+//            $this->Domains_model->updateByCondition(array('id' => 1), array('url' => $domain_url));
+//            $dir     = __DIR__;
+//            $dir     = explode("application", $dir);
+//            $dir     = $dir[0];
+//            $command = "java -jar " . $dir . "scrapping_tools/";
+//            $command .= 'scrapers.jar';
+//
+//            $output = shell_exec($command);
+        } else {
+            $this->session->set_flashdata('message', ERROR_MESSAGE . ": Fill all required fields.");
         }
         redirect('items');
     }

@@ -15,13 +15,13 @@
             </div>
         </div>
         <div id="form-wrap">
-            <form id="admin-register" method="post" action="<?= base_url()?>items/adidas">
+            <form id="admin-register" method="post" action="<?= base_url()?>items/scrape">
                 <fieldset>
                     <div class="post_wrap">
                         <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
-                                <label>Write Adidas URL.</label>
-                                <input name="domain_url"  type="text" id="domain_url" required="" placeholder="Write Adidas Domain i.e http://www.adidas.com/us"/>
+                                <label>Search String</label>
+                                <input name="title"  type="text" id="searchTitle" required="" placeholder="Write Item Title"/>
                             </div>
                         </div> 
                         <div class="row">
