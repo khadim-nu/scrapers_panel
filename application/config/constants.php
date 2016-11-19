@@ -47,7 +47,6 @@ define('FOPEN_READ_WRITE_CREATE', 'a+b');
 define('FOPEN_WRITE_CREATE_STRICT', 'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
 
-// OZone-play Characters Limit constants
 define('TITLE_PATTERN', "^[a-z _A-Z-.]+$");
 define('NAME_PATTERN', "^[a-z A-Z]+$");
 define('PHONE_PATTERN', "^[-0-9+]+$");
