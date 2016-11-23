@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 define('APP_STATIC_URL', 'http://www.test.com/');
 
-define('APP_NAME', 'Temp Admin');
+define('APP_NAME', 'ByetBack Tool');
 define('ADMIN_EMAIL', 'spdevtesting@gmail.com');
 define('ADMIN_EMAIL_PASSWORD', 'sp@fiverr');
 define('ADMIN_NAME', 'Temp Admin');

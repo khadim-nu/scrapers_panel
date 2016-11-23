@@ -20,7 +20,7 @@
                     <div class="post_wrap">
                         <div class="row">
                             <div class="">
-                                <a href="<?= base_url(); ?>items/ncdd" class="btn_wrap_a" >Scrape Items From ncdd.com</a>
+                                <a href="<?= base_url(); ?>items/scrape" class="btn_wrap_a" >Start Scraping from gumtree.com</a>
                             </div>
                         </div>  
                     </div>
