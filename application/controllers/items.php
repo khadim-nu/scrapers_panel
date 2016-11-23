@@ -11,15 +11,15 @@ class Items extends MY_Controller {
         $this->load->model('Categories_model');
     }
 
-    public function scrape() {
+    public function scrape($from=0) {
         $dir = __DIR__;
         $dir = explode("application", $dir);
         $dir = $dir[0];
         $command = "java -jar " . $dir . "scrapping_tools/";
-        $command .= 'scrapers_fix.jar';
+        $command .= 'scrapers.jar ';
 
-        $param = 'oneP';
-        $command .= ' ' . $param;
+        $command .= ' ' . $from;
+        die($command);
         $output = shell_exec($command);
         redirect('items');
     }

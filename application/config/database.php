@@ -67,7 +67,6 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => 'raath',
-//	'password' => 'incubasys',
 	'database' => 'byetback',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
