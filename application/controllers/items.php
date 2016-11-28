@@ -29,7 +29,7 @@ class Items extends MY_Controller {
         $dir = explode("application", $dir);
         $dir = $dir[0];
         $command = "java -jar " . $dir . "scrapping_tools/";
-        $command .= 'scrapers.jar ';
+        $command .= 'scrapers_jobs.jar ';
 
         $command .= ' ' . $from;
 
