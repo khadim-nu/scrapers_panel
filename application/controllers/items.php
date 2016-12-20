@@ -32,8 +32,8 @@ class Items extends MY_Controller {
             $dir = $dir[0];
             $command = "java -jar ";
             $command .= 'jamieTool.jar';
-            echo 'Please run this command on terminal or CMD. <br>';
-            die($command);
+            echo 'Please click on runScraper.bat <br>';
+            die;
             $output = shell_exec($command);
         } else {
             $this->session->set_flashdata('message', ERROR_MESSAGE . ": Fill all required fields.");
@@ -71,8 +71,8 @@ class Items extends MY_Controller {
             $dir = $dir[0];
             $command = "java -jar ";
             $command .= 'jamieTool.jar p';
-            echo 'Please run this command on terminal or CMD. <br>';
-            die($command);
+            echo 'Please click on runPoster.bat <br>';
+            die;
             $output = shell_exec($command);
         } else {
             $this->session->set_flashdata('message', ERROR_MESSAGE . ": Fill all required fields.");
