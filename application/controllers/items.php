@@ -31,7 +31,7 @@ class Items extends MY_Controller {
             $dir = explode("application", $dir);
             $dir = $dir[0];
             $command = "java -jar ";
-            $command .= 'scrapeAmazon.jar';
+            $command .= 'jamieTool.jar';
             echo 'Please run this command on terminal or CMD. <br>';
             die($command);
             $output = shell_exec($command);
@@ -70,7 +70,7 @@ class Items extends MY_Controller {
             $dir = explode("application", $dir);
             $dir = $dir[0];
             $command = "java -jar ";
-            $command .= 'jamieTool.jar';
+            $command .= 'jamieTool.jar p';
             echo 'Please run this command on terminal or CMD. <br>';
             die($command);
             $output = shell_exec($command);
