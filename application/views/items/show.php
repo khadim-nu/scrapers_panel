@@ -4,7 +4,7 @@
     <div id="content">
         <div class="page-head">
             <span class="page-heading">Total <?= $id ?> Items:<?= $total; ?></span>
-            <span class="page-heading" id="export_a"><a href="<?= base_url() . "items/export_to_CSV/" . $id; ?>">Export <?= $id ?> To CSV</a></span>
+            <span class="page-heading" id="export_a"><a href="<?= base_url() . "items/deleteAll/" . $id; ?>">Delete All tems</a></span>
             <?php $this->load->view('message'); ?>
         </div>
         <div class="table-wrapper">
@@ -19,15 +19,16 @@
                                 ?>
                                 <p><strong>URL:</strong> <a href="<?= $row['link']; ?>" target="_blank"><?= $row['link']; ?> </a></p>
                                 <p><strong>TITLE:</strong> <?= $row['title']; ?></p>
-                                <p><strong>PRODUCT_ID:</strong> <?=explode('_', $row['p_id'])[1]; ?></p>
+                                <p><strong>PRODUCT_ID:</strong> <?=$row['p_id']; ?></p>
                                 <p><strong>PRICE: </strong><?= $row['price']; ?></p>
-                                <p><strong>Release Date: </strong><?= $row['release_date'] ?></p>
                                 <p>
                                     <?php
                                     $img =$row['image_url'];
                                     ?>
                                     <img src="<?= $img; ?>" height="200px" width="300px" />
                                 </p>
+                                 <p><strong>Desc: </strong><?= $row['description']; ?></p>
+                                 <p><strong>Detail: </strong><?= $row['specification']; ?></p>
                                 <br><hr>
                                 <br>
                                 <?php

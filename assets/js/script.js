@@ -209,32 +209,143 @@ $(document).ready(function () {
     //////////////////
 
 
-    $('#auction_type').on('change', function () {
-        if (this.value === "fixed") {
-            $("#auction_fields").css("display", "none");
-            $("#auction2_fields").css("display", "block");
-            $('form').parsley().destroy();
-            $('#starting_price').attr('data-parsley-required', 'false');
-            $('#reserve_price').attr('data-parsley-required', 'false');
+    $('#section').on('change', function () {
+        var options = "";
+        switch (this.value) {
+            case "1":
+                options += '<option selected="selected" value="0">--Select Category--</option>';
+                options += '<option value="2">Antiques</option>';
+                options += '<option value="3">Art</option>';
+                options += '<option value="4">Baby</option>';
+                options += '<option value="5">Books</option>';
+                options += '<option value="6">Business &amp; Industrial</option>';
+                options += '<option value="7">Cameras &amp; Photo</option>';
+                options += '<option value="10">Clothing &amp; Accessories</option>';
+                options += '<option value="12">Collectibles</option>';
+                options += '<option value="13">Computers &amp; Office</option>';
+                options += '<option value="14">Consumer Electronics</option>';
+                options += '<option value="15">Dolls &amp; Bears</option>';
+                options += '<option value="16">DVDs &amp; Movies</option>';
+                options += '<option value="42">Everything Else</option>';
+                options += '<option value="18">Food &amp; Wine</option>';
+                options += '<option value="19">Gifts &amp; Occasions</option>';
+                options += '<option value="20">Health &amp; Beauty</option>';
+                options += '<option value="21">Hobbies &amp; Crafts</option>';
+                options += '<option value="23">Home &amp; Furniture</option>';
+                options += '<option value="22">Home Appliances</option>';
+                options += '<option value="24">Jewelry, Gems, Watches</option>';
+                options += '<option value="43">Marine</option>';
+                options += '<option value="27">Music &amp; Instruments</option>';
+                options += '<option value="29">Networking &amp; Telecom</option>';
+                options += '<option value="30">PDAs</option>';
+                options += '<option value="31">Pet Supplies</option>';
+                options += '<option value="32">Pottery &amp; Glass</option>';
+                options += '<option value="44">Services &amp; Trades</option>';
+                options += '<option value="35">Sporting Goods</option>';
+                options += '<option value="36">Sports Memorabilia</option>';
+                options += '<option value="37">Stamps</option>';
+                options += '<option value="1569">Tickets &amp; Vouchers</option>';
+                options += '<option value="38">Toys</option>';
+                options += '<option value="39">Travel</option>';
+                options += '<option value="40">TV</option>';
+                options += '<option value="41">Video Games</option>';
+                options += '<option value="1573">Tools</option>';
+                break;
+            case "2":
+                options += '<option selected="selected" value="0">--Select Category--</option>';
+                options += '<option value="181">Cars</option>';
+                options += '<option value="26">Motorcycles</option>';
+                options += '<option value="1571">Quad Bikes</option>';
+                options += '<option value="1570">Scooters</option>';
+                options += '<option value="182">Vans &amp; Trucks</option>';
+                options += '<option value="183">Vehicle Parts</option>';
+                options += '<option value="1572">Other</option>';
+                break;
 
-            $('#auction_split').attr('data-parsley-required', 'true');
-            $('#starting_auction').attr('data-parsley-required', 'true');
-            $('#buynow_auction').attr('data-parsley-required', 'true');
-            $('#reserve_auction').attr('data-parsley-required', 'true');
-            $('form').parsley();
-        } else if (this.value === "regular" || this.value === "classified") {
-            $("#auction_fields").css("display", "block");
-            $("#auction2_fields").css("display", "none");
-            $('form').parsley().destroy();
-            $('#starting_price').attr('data-parsley-required', 'true');
-            $('#reserve_price').attr('data-parsley-required', 'true');
+            case "3":
+                options += '<option selected="selected" value="0">--Select Category--</option>';
+                options += '<option value="248">Property For Sale</option>';
+                options += '<option value="247">Long Lets</option>';
+                options += '<option value="246">Short / Holiday Lets</option>';
+                break;
 
-            $('#auction_split').attr('data-parsley-required', 'false');
-            $('#starting_auction').attr('data-parsley-required', 'false');
-            $('#buynow_auction').attr('data-parsley-required', 'false');
-            $('#reserve_auction').attr('data-parsley-required', 'false');
-            $('form').parsley();
+            case "4":
+                options += '<option selected="selected" value="0">--Select Category--</option>';
+                options += '<option value="1501">Accounting</option>';
+                options += '<option value="1502">Admin &amp; Clerical</option>';
+                options += '<option value="1503">Automotive</option>';
+                options += '<option value="1504">Banking</option>';
+                options += '<option value="1505">Biotech &amp; Health Care</option>';
+                options += '<option value="1506">Business Development</option>';
+                options += '<option value="1507">Business Opportunity</option>';
+                options += '<option value="1508">Construction</option>';
+                options += '<option value="1509">Consultant</option>';
+                options += '<option value="1510">Customer Service</option>';
+                options += '<option value="1511">Design</option>';
+                options += '<option value="1512">Distribution &amp; Shipping</option>';
+                options += '<option value="1513">Education</option>';
+                options += '<option value="1514">Engineering</option>';
+                options += '<option value="1515">Entry Level</option>';
+                options += '<option value="1516">Executive</option>';
+                options += '<option value="1517">Facilities</option>';
+                options += '<option value="1518">Finance</option>';
+                options += '<option value="1519">Franchise</option>';
+                options += '<option value="1520">General Business   </option>';
+                options += '<option value="1521">General Labor</option>';
+                options += '<option value="1522">Government</option>';
+                options += '<option value="1523">Grocery</option>';
+                options += '<option value="1524">Hospitality &amp; Hotel</option>';
+                options += '<option value="1525">Human Resources</option>';
+                options += '<option value="1526">Information Technology</option>';
+                options += '<option value="1527">Installation / Maint / Repair</option>';
+                options += '<option value="1528">Insurance</option>';
+                options += '<option value="1529">Inventory</option>';
+                options += '<option value="1530">Legal</option>';
+                options += '<option value="1531">Legal Admin</option>';
+                options += '<option value="1532">Management</option>';
+                options += '<option value="1533">Manufacturing</option>';
+                options += '<option value="1534">Marketing</option>';
+                options += '<option value="1535">Media / Journalism / Newspaper</option>';
+                options += '<option value="1536">Nonprofit &amp; Social Services</option>';
+                options += '<option value="1537">Nurse</option>';
+                options += '<option value="1538">Other  </option>';
+                options += '<option value="1539">Pharmaceutical  </option>';
+                options += '<option value="1540">Professional Services  </option>';
+                options += '<option value="1541">Purchasing &amp; Procurement  </option>';
+                options += '<option value="1542">QA</option>';
+                options += '<option value="1543">Quality Control  </option>';
+                options += '<option value="1544">Real Estate  </option>';
+                options += '<option value="1545">Research  </option>';
+                options += '<option value="1546">Restaurant &amp; Food Service  </option>';
+                options += '<option value="1547">Retail  </option>';
+                options += '<option value="1548">Sales  </option>';
+                options += '<option value="1549">Science  </option>';
+                options += '<option value="1550">Skilled Labor &amp; Trades  </option>';
+                options += '<option value="1551">Strategy / Planning  </option>';
+                options += '<option value="1552">Supply Chain  </option>';
+                options += '<option value="1553">Telecommunications  </option>';
+                options += '<option value="1554">Training  </option>';
+                options += '<option value="1555">Transportation  </option>';
+                options += '<option value="1556">Veterinary Services  </option>';
+                options += '<option value="1557">Warehouse  </option>';
+
+                break;
+
+            case "11":
+                options += '<option selected="selected" value="0">--Select Category--</option>';
+                options += '<option value="1565">Charity</option>';
+                options += '<option value="1563">Cultural</option>';
+                options += '<option value="1562">Entertainment</option>';
+                options += '<option value="1567">Fundraising</option>';
+                options += '<option value="1568">Religious</option>';
+                options += '<option value="1564">Sport</option>';
+                options += '<option value="1566">Other</option>';
+                break;
+
+            default :
         }
+
+        $("#category").html(options);
     });
 
 

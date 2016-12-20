@@ -21,7 +21,7 @@
                         <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
                                 <label>Search String</label>
-                                <input name="title"  type="text" id="searchTitle" required="" placeholder="Write Item Title"/>
+                                <input name="string"  type="text" id="searchTitle" required="" placeholder="Write Item Title"/>
                             </div>
                         </div>
                         <div class="row form-group">

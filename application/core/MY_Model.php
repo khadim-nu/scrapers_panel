@@ -138,6 +138,10 @@ class MY_Model extends CI_Model {
      * @return : affected number of rows
      */
 
+    public function truncate() {
+        return $this->db->truncate($this->table_name);
+    }
+
     public function remove_record($id) {
         $this->db->where($this->primary_key, $id);
         $this->db->delete($this->table_name);
@@ -183,7 +187,7 @@ class MY_Model extends CI_Model {
     public function db_result_to_string($query) {
         $str = '';
         foreach ($query as $value) {
-            $str.=(implode("=", $value)) . ',';
+            $str .= (implode("=", $value)) . ',';
         }
         return $str;
     }

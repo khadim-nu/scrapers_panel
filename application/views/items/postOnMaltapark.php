@@ -20,14 +20,19 @@
                     <div class="post_wrap">
                         <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
-                                <label>Price %age to be added in each item</label>
-                                <input name="price"  type="text" id="searchTitle" required="" placeholder="Enter extra price to be added"/>
+                                <label>%age  in each item (original+shipping) price</label>
+                                <select name="price" required="">
+                                    <option selected="selected" value="0">0 %age</option>
+                                    <?php for ($i = 1; $i <= 100; $i++) { ?>
+                                        <option value="<?= $i; ?>"><?= $i; ?> %age</option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div> 
                         <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
                                 <label for="Section">Section</label><br/>
-                                <select name="section" required="">
+                                <select name="section" id="section" required="">
                                     <option selected="selected" value="0">--Select Section--</option>
                                     <option value="1">Classifieds &amp; Buy Now</option>
                                     <option value="2">Cars &amp; Parts</option>
@@ -41,53 +46,16 @@
                         <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
                                 <label for="Category">Category</label><br/>
-                                <select name="category"  required="required">
-                                        <option selected="selected" value="0">--Select Category--</option>
-                                        <option value="2">Antiques</option>
-                                        <option value="3">Art</option>
-                                        <option value="4">Baby</option>
-                                        <option value="5">Books</option>
-                                        <option value="6">Business &amp; Industrial</option>
-                                        <option value="7">Cameras &amp; Photo</option>
-                                        <option value="10">Clothing &amp; Accessories</option>
-                                        <option value="12">Collectibles</option>
-                                        <option value="13">Computers &amp; Office</option>
-                                        <option value="14">Consumer Electronics</option>
-                                        <option value="15">Dolls &amp; Bears</option>
-                                        <option value="16">DVDs &amp; Movies</option>
-                                        <option value="42">Everything Else</option>
-                                        <option value="18">Food &amp; Wine</option>
-                                        <option value="19">Gifts &amp; Occasions</option>
-                                        <option value="20">Health &amp; Beauty</option>
-                                        <option value="21">Hobbies &amp; Crafts</option>
-                                        <option value="23">Home &amp; Furniture</option>
-                                        <option value="22">Home Appliances</option>
-                                        <option value="24">Jewelry, Gems, Watches</option>
-                                        <option value="43">Marine</option>
-                                        <option value="27">Music &amp; Instruments</option>
-                                        <option value="29">Networking &amp; Telecom</option>
-                                        <option value="30">PDAs</option>
-                                        <option value="31">Pet Supplies</option>
-                                        <option value="32">Pottery &amp; Glass</option>
-                                        <option value="44">Services &amp; Trades</option>
-                                        <option value="35">Sporting Goods</option>
-                                        <option value="36">Sports Memorabilia</option>
-                                        <option value="37">Stamps</option>
-                                        <option value="1569">Tickets &amp; Vouchers</option>
-                                        <option value="38">Toys</option>
-                                        <option value="39">Travel</option>
-                                        <option value="40">TV</option>
-                                        <option value="41">Video Games</option>
-                                        <option value="1573">Tools</option>
-
-                                    </select>
+                                <select name="category" id="category"  required="required">
+                                    <option selected="selected" value="0">--Select Category--</option>
+                                </select>
 
                             </div>
                         </div> 
                         <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
                                 <label for="Type">"WANTED" listing?<br></label>
-                                <input id="wanted" type="checkbox" name="wanted" required="">
+                                <input id="wanted" type="checkbox" value="1" name="wanted">
                             </div>
                         </div> 
                         <div class="row">

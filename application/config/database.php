@@ -64,7 +64,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => '52.11.26.183',
 	'username' => 'root',
 	'password' => 'raath@aws',
 //	'password' => 'incubasys',
