@@ -11,9 +11,10 @@ class Admin extends MY_Controller {
     }
 
     public function seed() {
-      $this->Admin_model->seed_admin();
-      die("Seeded");
+        $this->Admin_model->seed_admin();
+        die("Seeded");
     }
+
     public function index() {
         if (is_admin()) {
             redirect('admin/scrape_items');
@@ -21,14 +22,16 @@ class Admin extends MY_Controller {
             redirect('admin/login');
         }
     }
+
     public function scrape_items() {
         if (is_admin()) {
             $data['user_role'] = 'admin';
             $data['title'] = 'scrape items';
+            $this->load->model('params_model');
+            $data['param'] = $this->params_model->get_single("id", "1");
             $this->load->view('admin/dashboard', $data);
         } else {
             redirect('admin/login');
-            
         }
     }
 
@@ -41,8 +44,7 @@ class Admin extends MY_Controller {
                     $this->session->set_flashdata('form_data', $_POST);
                     redirect('admin/login');
                 }
-            }
-            else{
+            } else {
                 $data['user_role'] = 'admin';
                 $data['title'] = 'Admin Login';
                 $this->load->view('admin/login', $data);
@@ -79,14 +81,13 @@ class Admin extends MY_Controller {
             redirect('admin/forgot_password');
         }
     }
-    
+
     public function changepassword() {
         if (is_admin()) {
             if ($this->input->server('REQUEST_METHOD') === 'POST') {
                 if ($this->Admin_model->updatePassword($this->session->userdata('user_data')->name)) {
                     redirect('admin');
-                }
-                else{
+                } else {
                     redirect('admin/changepassword');
                 }
             } else {
@@ -135,15 +136,13 @@ class Admin extends MY_Controller {
 
     public function view_all() {
         if (is_admin()) {
-            $data['data'] = $this->Admin_model->get_all(FALSE,FALSE, "created_at","id != ",$this->session->userdata('user_data')->id,"role_id != ",1);
+            $data['data'] = $this->Admin_model->get_all(FALSE, FALSE, "created_at", "id != ", $this->session->userdata('user_data')->id, "role_id != ", 1);
             $data['title'] = 'All Admins';
             $this->load->view('admin/view_admins', $data);
         } else {
             redirect('welcome');
         }
     }
-
-   
 
     public function change_status($id, $status) {
         if (is_admin()) {
@@ -153,9 +152,10 @@ class Admin extends MY_Controller {
             redirect('welcome');
         }
     }
-        public function basic_info() {
+
+    public function basic_info() {
         if (is_admin()) {
-            $data['title'] =  $this->session->userdata('user_data')->name;
+            $data['title'] = $this->session->userdata('user_data')->name;
             $this->load->view('admin/basic_info', $data);
         } else {
             redirect('welcome');
@@ -180,4 +180,5 @@ class Admin extends MY_Controller {
             redirect('welcome');
         }
     }
+
 }

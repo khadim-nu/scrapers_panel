@@ -16,8 +16,8 @@ class Items extends MY_Controller {
 
     public function scrape() {
         $string = $this->input->post('string');
-        $greaterThan = $this->input->post('greaterThan');
-        $lessThan = $this->input->post('lessThan');
+        $greaterThan = 0;//$this->input->post('greaterThan');
+        $lessThan = 0;//$this->input->post('lessThan');
 
         $this->Params_model->truncate();
 

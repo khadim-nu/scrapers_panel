@@ -19,12 +19,12 @@
                 <fieldset>
                     <div class="post_wrap">
                         <div class="row form-group">
-                            <div class="col-xs-8 input-wrap" >
-                                <label>Search String</label>
-                                <input name="string"  type="text" id="searchTitle" required="" placeholder="Write Item Title"/>
+                            <div class="input-wrap" style="width: 90%;" >
+                                <label>Amazon Items Url</label>
+                                <input name="string" value="<?= $param->string; ?>"  type="text" id="searchTitle" required="" placeholder="Write here"/>
                             </div>
                         </div>
-                        <div class="row form-group">
+<!--                        <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
                                 <label>Price Range</label>
                                 <input name="greaterThan"  type="number" id="searchTitle" required="" placeholder="Greater than"/>
@@ -34,7 +34,7 @@
                             <div class="col-xs-8 input-wrap" >
                                 <input name="lessThan"  type="number" id="searchTitle" required="" placeholder="Less than"/>
                             </div>
-                        </div> 
+                        </div> -->
                         <div class="row">
                             <div class="col-xs-8">
                                 <input type="submit" class="btn_submit" value="Start Scraping"/>

@@ -92,11 +92,7 @@ class MY_Model extends CI_Model {
     public function get_record_by_id($id) {
 
         $this->db->where($this->primary_key, $id);
-        if (is_player()) {
-            $this->db->where('status', 1);
-        } else if (is_developer()) {
-            $this->db->where('developerID', $this->session->userdata('user_data')->id);
-        }
+
         return $this->db->get($this->table_name)->result_array();
     }
 
