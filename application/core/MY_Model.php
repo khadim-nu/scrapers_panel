@@ -158,27 +158,6 @@ class MY_Model extends CI_Model {
      * @return : Count of all the records
      */
 
-    public function record_statistics($where_column_name = NULL, $where_column_value = NULL, $gameID = NULL) {
-        $this->db->select(' MONTH(created_at) as month, COUNT(*) as value ');
-        if ($where_column_name != NULL) {
-            $this->db->where($where_column_name . ' = ' . $where_column_value . ' AND YEAR(created_at) = YEAR(CURDATE())');
-        } else {
-            $this->db->where(' YEAR(created_at) = YEAR(CURDATE())');
-        }
-        if ($gameID != NULL) {
-            $this->db->where('gameID', $gameID);
-        }
-        $this->db->group_by('MONTH(created_at)');
-        $this->db->order_by('month', 'ASC');
-        $query = $this->db->get($this->table_name);
-        //$this->output->enable_PROFILER(TRUE);
-        if ($query->num_rows() > 0) {
-            $query = $query->result_array();
-            return $query;
-        } else {
-            return FALSE;
-        }
-    }
 
     public function db_result_to_string($query) {
         $str = '';

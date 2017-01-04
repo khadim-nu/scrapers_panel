@@ -20,7 +20,7 @@
                     <div class="post_wrap">
                         <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
-                                <label>%age  in each item (original+shipping) price</label>
+                                <label>%age  in each item (original+shipping) price</label><br/>
                                 <select name="price" required="">
                                     <option selected="selected" value="0">0 %age</option>
                                     <?php for ($i = 1; $i <= 100; $i++) { ?>
@@ -31,9 +31,19 @@
                         </div> 
                         <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
+                                <label>Select items Label</label><br/>
+                                <select name="label">
+                                    <?php foreach ($labels as $key => $label) { ?>
+                                        <option value="<?= $label['label']; ?>"><?= $label['label'];?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div> 
+                        <div class="row form-group">
+                            <div class="col-xs-8 input-wrap" >
                                 <label for="Section">Section</label><br/>
-                                <select name="section" id="section" required="">
-                                    <option selected="selected" value="0">--Select Section--</option>
+                                <select name="section" id="section" required="required">
+                                    <option selected="selected">--Select Section--</option>
                                     <option value="1">Classifieds &amp; Buy Now</option>
                                     <option value="2">Cars &amp; Parts</option>
                                     <option value="3">Property</option>

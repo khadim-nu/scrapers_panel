@@ -24,12 +24,13 @@
                                 <input name="string" value="<?= $param->string; ?>"  type="text" id="searchTitle" required="" placeholder="Write here"/>
                             </div>
                         </div>
-<!--                        <div class="row form-group">
+                        <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
-                                <label>Price Range</label>
-                                <input name="greaterThan"  type="number" id="searchTitle" required="" placeholder="Greater than"/>
+                                <label>Items label</label>
+                                <input name="label" value="<?= $param->label; ?>"  type="text" id="searchTitle" required="" placeholder="Items label"/>
                             </div>
                         </div> 
+                        <!--
                         <div class="row form-group">
                             <div class="col-xs-8 input-wrap" >
                                 <input name="lessThan"  type="number" id="searchTitle" required="" placeholder="Less than"/>

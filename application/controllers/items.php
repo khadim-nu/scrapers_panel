@@ -16,35 +16,27 @@ class Items extends MY_Controller {
 
     public function scrape() {
         $string = $this->input->post('string');
-        $greaterThan = 0;//$this->input->post('greaterThan');
-        $lessThan = 0;//$this->input->post('lessThan');
+        $label = $this->input->post('label');
+        $greaterThan = 0; //$this->input->post('greaterThan');
+        $lessThan = 0; //$this->input->post('lessThan');
 
         $this->Params_model->truncate();
 
-        $dataArr = array('string' => $string, 'greaterThan' => $greaterThan, 'lessThan' => $lessThan);
+        $dataArr = array('string' => $string, 'greaterThan' => $greaterThan, "label" => $label, 'lessThan' => $lessThan);
 
         $this->Params_model->save($dataArr);
 
-        if (!empty($string)) {
-//            $this->params_model->updateByCondition(array('id' => 1), array('url' => $domain_url));
-            $dir = __DIR__;
-            $dir = explode("application", $dir);
-            $dir = $dir[0];
-            $command = "java -jar ";
-            $command .= 'jamieTool.jar';
-            echo 'Please click on runScraper.bat <br>';
-            die;
-            $output = shell_exec($command);
-        } else {
-            $this->session->set_flashdata('message', ERROR_MESSAGE . ": Fill all required fields.");
-        }
-        redirect('items');
+        $this->session->set_flashdata('message', "Saved Successfully! Please click on scraper.bat");
+
+        redirect('admin/scrape_items');
     }
 
     public function postOnMaltaPark() {
         if (is_admin()) {
             $data['user_role'] = 'admin';
             $data['title'] = 'Post Itmes On Maltapark';
+            $labels=$this->Items_model->findByCondition($where=array("status"=>1), $order_by = "label", $group_by = "label", $select = 'id,label');
+            $data['labels']=$labels;
             $this->load->view('items/postOnMaltapark', $data);
         } else {
             redirect('admin/login');
@@ -53,6 +45,7 @@ class Items extends MY_Controller {
 
     public function startPosting() {
         $price = $this->input->post('price');
+        $label = $this->input->post('label');
         $section = $this->input->post('section');
         $cat = $this->input->post('category');
         $wanted = $this->input->post('wanted');
@@ -60,29 +53,18 @@ class Items extends MY_Controller {
 
         $this->Configs_model->truncate();
 
-        $dataArr = array('price' => $price, 'section' => $section, 'category' => $cat, 'wanted' => $wanted);
+        $dataArr = array('price' => $price, 'section' => $section,'label'=>$label, 'category' => $cat, 'wanted' => $wanted);
 
         $this->Configs_model->save($dataArr);
 
-        if (!empty($cat)) {
-//            $this->Domains_model->updateByCondition(array('id' => 1), array('url' => $domain_url));
-            $dir = __DIR__;
-            $dir = explode("application", $dir);
-            $dir = $dir[0];
-            $command = "java -jar ";
-            $command .= 'jamieTool.jar p';
-            echo 'Please click on runPoster.bat <br>';
-            die;
-            $output = shell_exec($command);
-        } else {
-            $this->session->set_flashdata('message', ERROR_MESSAGE . ": Fill all required fields.");
-        }
-        redirect('items');
+        $this->session->set_flashdata('message', "Saved Successfully! Please click on poster.bat");
+
+        redirect('items/postOnMaltaPark');
     }
 
     public function show($id = NULL) {
         if (is_admin()) {
-            $where = array("p_id like " => "%" . $id . "%", "title !=" => "");
+            $where = array("p_id like " => "%" . $id . "%", "title !=" => '', "status =" => 1);
             $data['data'] = $this->Items_model->get_all_custom_where($where, $select = FALSE);
             $data['total'] = 0;
             if ($data['data'] && !empty($data['data'])) {

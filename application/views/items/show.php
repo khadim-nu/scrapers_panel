@@ -11,8 +11,6 @@
             <div class="holder">
                 <div class="block wide-view">
                     <div class="row-fluid">
-
-
                         <?php
                         if ($data) {
                             foreach ($data as $row) {
@@ -27,6 +25,7 @@
                                     ?>
                                     <img src="<?= $img; ?>" height="200px" width="300px" />
                                 </p>
+                                 <p><strong>Label: </strong><?= $row['label']; ?></p>
                                  <p><strong>Desc: </strong><?= $row['description']; ?></p>
                                  <p><strong>Detail: </strong><?= $row['specification']; ?></p>
                                 <br><hr>
